@@ -1,0 +1,38 @@
+<template>
+   <lightning-card title="TODOLIST">
+   <lightning-button-icon onclick={refreshTodoList} icon-name="utility:sync" title="refresh" alternative-text="refresh" slot="actions"></lightning-button-icon>
+    <p>todoTaskSize: {todoTasksSize}</p>
+   <lightning-layout>
+      <lightning-layout-item padding="around-small" size="12">
+         <lightning-spinner if:true={processing} alternative-text="loading" size="small"></lightning-spinner>
+         <ul class="slds-has-dividers_around-space">
+            <template if:true={todoTasks}>
+               <template for:each={todoTasks} for:item="todoTask">
+                  <li key={todoTask.id} class="slds-item">
+                     <lightning-layout horizontal-align="spread">
+                        <lightning-layout-item padding="horizontal-small">
+                           {todoTask.name}
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="horizontal-small">
+                           <lightning-button-icon icon-name="utility:delete" name={todoTask.id} onclick={deleteTaskFromList} title="delete" alternative-text="Delete"></lightning-button-icon>
+                        </lightning-layout-item>
+                     </lightning-layout>
+                  </li>
+               </template>
+            </template>
+            
+         </ul>
+      </lightning-layout-item>
+   </lightning-layout>
+   <p slot="footer">
+      <lightning-layout pull-to-boundary="small">
+         <lightning-layout-item flexibility="grow" padding="horizontal-small">
+            <lightning-input type="text" autocomplete="off" onchange={updateNewTask} value={newTask} label="Please add New Task" variant="label-hidden" placeholder="New Task" required ></lightning-input>
+         </lightning-layout-item>
+         <lightning-layout-item  padding="horizontal-small">
+            <lightning-button label="Add" onclick={addNewTask} variant="brand" title="add"></lightning-button>
+         </lightning-layout-item>
+      </lightning-layout>
+   </p>
+   </lightning-card>
+</template>

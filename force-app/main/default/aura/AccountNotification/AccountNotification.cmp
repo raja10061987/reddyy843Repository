@@ -1,0 +1,20 @@
+<aura:component implements="force:appHostable">
+this is Account Notification Component
+<!-- EMP API Component for subscribing event -->
+<lightning:empApi aura:id="empAPI"></lightning:empApi>
+<aura:handler name="init" value="{!this}" action="{!c.subscribe}"></aura:handler>
+<aura:attribute name="notifications" type="List"></aura:attribute>
+<aura:attribute name="iseventReceived" type="boolean"></aura:attribute>
+<lightning:card title="notifications">
+<aura:if isTrue="{!v.iseventReceived}">
+<p class="slds-p-horizontal_small">
+<ui:message severity="info" closable="true">
+<aura:iteration items="{!v.notifications}" var="val">
+   {!val.accountName} - {!val.phone}<br/>
+</aura:iteration>
+</ui:message>
+</p>
+</aura:if>
+</lightning:card>
+
+</aura:component>

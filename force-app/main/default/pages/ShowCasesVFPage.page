@@ -1,0 +1,18 @@
+<apex:page controller="ShowCases" setup="false" showHeader="true" sidebar="false" tabStyle="report">
+    <apex:sectionHeader title="case records" subtitle="All cases" />
+    <apex:form >
+    <apex:pageBlock title="total records: ({!caseList.size})">
+    <apex:pageBlockTable value="{!caseList}" var="caseObj">
+    <apex:column >
+    <apex:outputLink value="/{!caseObj.Id}" target="_blank">{!caseObj.caseNumber}</apex:outputLink>
+    </apex:column>
+    <apex:column value="{!caseObj.priority}"/>
+    <apex:column value="{!caseObj.status}"/>
+    <apex:column value="{!caseObj.origin}"/>
+    <apex:column value="{!caseObj.reason}"/>
+    <apex:column value="{!caseObj.subject}"/>
+    <apex:column value="{!caseObj.createdby.id}"/>
+    </apex:pageBlockTable>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

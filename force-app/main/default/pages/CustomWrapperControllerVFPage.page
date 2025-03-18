@@ -1,0 +1,29 @@
+<apex:page controller="CustomWrapperController" action="{!getData}" setup="false" sidebar="false" showHeader="true" tabStyle="lead">
+<apex:sectionHeader title="wrapper" subtitle="leadcontactwrappr" />
+<apex:form >
+<apex:pageBlock title="leadcontactrecords:size ({!lstWrappr.size})" id="pageBlock">
+<apex:pageBlockButtons location="top">
+<apex:commandButton value="select All" action="{!selectAllRecords}" reRender="pageBlock"/>
+<apex:commandButton value="deselect All" action="{!deselectAllRecords}" reRender="pageBlock"/>
+<apex:commandButton value="delete selected records" action="{!deleteselectedRecords}" reRender="pageBlock"  />
+</apex:pageBlockButtons>
+
+ <apex:pageBlockTable value="{!lstWrappr}" var="wrapperObj">
+ <apex:column headerValue="Action">
+ <apex:inputCheckbox value="{!wrapperObj.isSelected}" />
+ </apex:column>
+ <apex:column value="{!wrapperObj.isLeadContactRecord}" headerValue="Lead/Contact Record"/>
+  <apex:column headerValue="Name">
+  <apex:outputLink value="/{!wrapperObj.recordId}" target="_blank">{!wrapperObj.fName}{!wrapperObj.lName}</apex:outputLink>
+  </apex:column>
+  <apex:column value="{!wrapperObj.recordId}" headerValue="Record Id"/>
+ <apex:column value="{!wrapperObj.fName}" headerValue="FirstName"/>
+ <apex:column value="{!wrapperObj.lName}" headerValue="LastName"/>
+ <apex:column value="{!wrapperObj.emailId}" headerValue="EmailId"/>
+ <apex:column value="{!wrapperObj.contactNumber}" headerValue="Contact Number"/>
+ <apex:column value="{!wrapperObj.faxNumber}" headerValue="fax Number" />
+ 
+ </apex:pageBlockTable>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

@@ -1,0 +1,12 @@
+<template>
+    <div style="width:700px">
+     <lightning-card title="user details">
+      <p class="slds-p-around_medium">
+          {user.FirstName}{user.LastName}
+      </p>
+      <br/>
+      <p>isMyUser: {ismyuser}</p>
+      <lightning-button slot="actions" label="update user details" onclick={updateUser}></lightning-button>
+     </lightning-card>
+    </div>
+</template>

@@ -1,0 +1,26 @@
+<apex:page controller="ShowAllAccountsPicklistController" setup="false" sidebar="false" showHeader="true" tabStyle="account">
+ <apex:sectionHeader title="apex actions" subtitle="apex action support" />
+ <apex:form >
+ <apex:pageBlock title="account records">
+ <apex:pageBlockSection title="all accounts"  collapsible="true" columns="1">
+ <apex:selectList value="{!selectedAccountId}" label="select the account Name" multiselect="false" size="1" >
+ <apex:actionSupport event="onchange" action="{!getRelatedContacts}" reRender="pageBlock" />
+ <apex:selectOptions value="{!lstOptions}"></apex:selectOptions>
+ </apex:selectList>
+ </apex:pageBlockSection>
+ </apex:pageBlock>
+ <apex:pageBlock id="pageBlock"  title="related contact recordds size: {!contList.size}">
+ <apex:pageBlockTable value="{!contList}" var="contObj">
+     <apex:column value="{!contObj.Name}"/>
+     <apex:column value="{!contObj.firstName}"/>
+      <apex:column value="{!contObj.LastName}"/>
+      <apex:column value="{!contObj.email}"/>
+      <apex:column value="{!contObj.phone}"/>
+     <apex:column value="{!contObj.fax}"/>
+ </apex:pageBlockTable>
+     <p style="color:red">{!iscontactsAvailable}</p>
+ </apex:pageBlock>
+ 
+ 
+ </apex:form>
+</apex:page>

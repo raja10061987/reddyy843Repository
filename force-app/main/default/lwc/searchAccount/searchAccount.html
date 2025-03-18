@@ -1,0 +1,11 @@
+<template>
+    <lightning-input label="search"  type="search" onchange={handleNameChange} value={accountName} class="slds-m-bottom_small"></lightning-input>
+    <span>account records count: ({accountsCount})</span>
+    <template for:each={actList} for:item="account" for:index="index">
+         <ul key={account.Id}>
+            <li>
+                {index}.{account.Name}
+            </li>
+         </ul>
+    </template>
+</template>

@@ -1,0 +1,16 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="GLOBAL">
+<lightning:messageChannel type="SampleMessageChannel__c" onMessage="{!c.HandleMessage}" scope="APPLICATION"></lightning:messageChannel>
+<aura:attribute name="recordId" type="String" default=""></aura:attribute>
+<aura:attribute name="fields" type="String[]" default="['Name','Type','Industry']"></aura:attribute>
+<lightning:card title="Aura subscriber">
+<p class="slds-p-horizontal_small">
+<aura:if isTrue="{!v.recordId}">
+    <lightning:recordForm aura:id="myRecordViewForm" objectApiName="Account" recordId="{!v.recordId}" fields="{!v.fields}" columns="2" mode="view"></lightning:recordForm>
+    <aura:set attribute="else">
+        No Record Id available
+    </aura:set>
+</aura:if>
+
+</p>
+</lightning:card>
+</aura:component>

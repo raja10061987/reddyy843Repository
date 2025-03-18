@@ -1,0 +1,272 @@
+<!--
+    Copyright (c) 2018 - Present, Rahul Malhotra. All rights reserved.
+    Use of this source code is governed by a BSD 3-Clause License that can be found in the LICENSE.md file.
+-->
+
+<!-- Lightning Component -->
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" controller="SObjectConvertorController" access="global">
+    <!-- Handler to run getInitialData function when the component is loaded -->
+    <aura:handler name="init" action="{!c.getInitialData}" value="{!this}"></aura:handler>
+    <!-- Aura attributes section begin -->
+    <!-- List to store names of sObjects present in the org -->
+    <aura:attribute name="sObjectList" type="List"></aura:attribute>
+    <!-- sObject Field Map to store each sObject and it's related fields in a map -->
+    <aura:attribute name="sObjectFieldMap" type="Object"></aura:attribute>
+    <!-- Source sObject Fields List to show in a dropdown -->
+    <aura:attribute name="sourceSObjectFields" type="List"></aura:attribute>
+    <!-- Destination sObject Fields List to show in a dropdown -->
+    <aura:attribute name="destinationSObjectFields" type="List"></aura:attribute>
+    <!-- Search results list shown when we search for a record in search textbox -->
+    <aura:attribute name="searchResults" type="List"></aura:attribute>
+    <!-- Record id list consisting of all the record ids to be converted -->
+    <aura:attribute name="recordIdList" type="List"></aura:attribute>
+    <!-- List of different sObject Mapping available in custom settings -->
+    <aura:attribute name="sObjectMapNames" type="List"></aura:attribute>
+    <!-- Actual map of fields selected from an existing mapping or by creating a new mapping -->
+    <aura:attribute name="recordMap" type="List"></aura:attribute>
+    <!-- List of records that failed to convert consisting of source sObject record id and error messages -->
+    <aura:attribute name="failureMap" type="List"></aura:attribute>
+    <!-- List of records that consists of source and destination sObject record ids -->
+    <aura:attribute name="successMap" type="List"></aura:attribute>
+    <!-- Aura attribute section end -->
+    <!-- Container Card Section Begin -->
+    <lightning:card>
+        <aura:set attribute="title"><b>sObject Convertor</b></aura:set>
+        <div class="slds-grid slds-wrap" style="border-top: 1px solid lightgray;">
+            <!-- This section consists of source and destination sObject dropdowns -->
+            <div class="slds-col slds-size_1-of-1">
+                <lightning:card title="Select Objects">
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2 container">
+                            <lightning:select aura:id="sourceSObject" name="sourceSObject" label="Select Source Object" onchange="{!c.getSObjectFields}">
+                                <aura:iteration var="sObjectName" items="{!v.sObjectList}">
+                                    <option value="{!sObjectName}">{!sObjectName}</option>
+                                </aura:iteration>
+                            </lightning:select>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 container">
+                            <lightning:select aura:id="destinationSObject" name="destinationSObject" label="Select Destination Object" onchange="{!c.getSObjectFields}">
+                                <aura:iteration var="sObjectName" items="{!v.sObjectList}">
+                                    <option value="{!sObjectName}">{!sObjectName}</option>
+                                </aura:iteration>
+                            </lightning:select>
+                        </div>
+                    </div>
+                </lightning:card>
+            </div>
+            <!-- 
+                This section consists of the search text box using which you can search
+                records in Source sObject by typing. It also consists of the Add record button
+                and the selected record ids that are shown in pills
+            -->
+            <div class="slds-col slds-size_1-of-1 block">
+                <lightning:card title="Search Records">
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-1">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_4-of-12 container">
+                                    <!-- Lookup Starts -->
+                                    <div>
+                                        <div class="slds-form-element">
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-combobox_container">
+                                                    <div aura:id="searchCombobox" class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-lookup" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                                        <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                                                            <label for="searchObject">&nbsp;Enter Search Text</label>
+                                                            <!-- ui Input used instead of lightning input -->
+                                                            <ui:inputText aura:id="searchRecord" class="slds-input slds-combobox__input" keyup="{!c.searchFocused}" blur="{!c.searchBlurred}" updateOn="keyup" />
+                                                        </div>
+                                                        <div id="listbox-unique-id" role="listbox">
+                                                            <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid" role="presentation">
+                                                                <aura:iteration items="{!v.searchResults}" var="object">
+                                                                    <li role="presentation" class="slds-listbox__item" onclick="{!c.setSearchValue}" data-record="{! object.Name!=null ? object.Name : object.Id }" data-recordid="{! object.Id }">
+                                                                        <div id="listbox-option-unique-id-01" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                                            <span class="slds-media__figure">
+                                                                                <span class="slds-icon_container slds-icon-standard-account" title="Description of icon when needed">
+                                                                                        <span class="slds-assistive-text">Description of icon when needed
+                                                                                        </span>
+                                                                            </span>
+                                                                            </span>
+                                                                            <span class="slds-media__body">
+                                                                                <span class="slds-listbox__option-text slds-listbox__option-text_entity">{!object.Name}
+                                                                                </span>
+                                                                            <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{!object.Id}</span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </li>
+                                                                </aura:iteration>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Lookup End -->
+                                </div>
+                                <div class="or slds-size_1-of-12">
+                                    or
+                                </div>
+                                <div class="slds-col slds-size_4-of-12 container">
+                                    <lightning:Input aura:id="inputRecordId" label="Enter Record Id" name="searchObject"></lightning:Input>
+                                </div>
+                                <div class="slds-col slds-size_3-of-12 container showFields">
+                                    <center><lightning:button name="showFields" variant="neutral" onclick="{!c.addRecord}" label="Add Record"></lightning:button></center>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 container">
+                            <ul>
+                                <aura:iteration items="{!v.recordIdList}" var="record">
+                                    <lightning:pill label="{!record}" onremove="{!c.removeRecordIdFromList}" />
+                                </aura:iteration>
+                            </ul>
+                        </div>
+                    </div>
+                </lightning:card>
+            </div>
+            <!-- 
+                This section consists of dropdown to select mapping type and
+                another dropdown showing the existing stored mapping which will show/hide depending
+                on the option selected in mapping type
+            -->
+            <div class="slds-col slds-size_1-of-1 block">
+                <lightning:card title="Define sObject Mapping">
+                    <aura:set attribute="actions">
+                        <lightning:button name="addRow" variant="neutral" onclick="{!c.addRow}" label="Add Row"></lightning:button>
+                        <lightning:button name="saveMapping" variant="neutral" onclick="{!c.saveMapping}" label="Save Mapping"></lightning:button>
+                    </aura:set>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2 container">
+                            <lightning:select aura:id="selectMappingType" name="selectMappingType" label="Mapping Type" onchange="{!c.toggleSelectMapping}">
+                                <option value="1">Create a New Mapping</option>
+                                <option value="2">Choose Existing Mapping</option>
+                            </lightning:select>
+                        </div>
+                        <div aura:id="selectMappingDropdownDiv" class="slds-col slds-size_1-of-2 container hidden">
+                            <lightning:select aura:id="selectMappingDropdown" name="selectMapping" label="Select Mapping" onchange="{!c.getSObjectMapping}">
+                                <aura:iteration var="mappingName" items="{!v.sObjectMapNames}">
+                                    <option value="{!mappingName}">{!mappingName}</option>
+                                </aura:iteration>
+                            </lightning:select>
+                        </div>
+                    </div>
+                </lightning:card>
+            </div>
+            <!-- 
+                This section consists of 1-1 mapping of fields from source sObject to destination sObject
+            -->
+            <aura:iteration var="fieldMap" items="{!v.recordMap}">
+                <div class="slds-col slds-size_1-of-1 block">
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-1 container">
+                                    <lightning:select name="selectSourceSObject" label="Source Object Field" onchange="{!c.refreshMap}" value="{!fieldMap.Source_Sobject_Field__c}">
+                                        <aura:iteration var="sObjectField" items="{!v.sourceSObjectFields}">
+                                            <option value="{!sObjectField}">{!sObjectField}</option>
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-1 container">
+                                    <lightning:select name="selectDestinationSObject" label="Destination Object Field" onchange="{!c.refreshMap}" value="{!fieldMap.Destination_SObject_Field__c}">
+                                        <aura:iteration var="sObjectField" items="{!v.destinationSObjectFields}">
+                                            <option value="{!sObjectField}">{!sObjectField}</option>
+                                        </aura:iteration>
+                                    </lightning:select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aura:iteration>
+            <!-- 
+                This section simply consists of convert record button which is responsible for converting the records from source to destination sObject
+            -->
+            <div class="slds-col slds-size_1-of-1 block">
+                <center>
+                    <lightning:button label="Convert Records" variant="brand" onclick="{!c.convertRecords}"></lightning:button>
+                </center>
+            </div>
+            <!-- 
+                This section consists of success and failure ids along with the specific messages
+                (if any) of each record that is to be converted
+            -->
+            <div class="slds-col slds-size_1-of-1 block">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-2 container">
+                        <table class="slds-table slds-table_bordered slds-table_cell-buffer border slds-table_fixed-layout">
+                            <thead>
+                                <tr class="slds-text-title_caps">
+                                    <th scope="col" class="center">
+                                        <div class="slds-truncate">Success Ids</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <aura:iteration items="{!v.successMap}" var="successObj">
+                                    <tr>
+                                        <th scope="row" class="tableRow center">
+                                            <a href="{!'/'+successObj.key}" target="_blank">{!successObj.key}</a> -> <a href="{!'/'+successObj.value}" target="_blank">{!successObj.value}</a>
+                                        </th>
+                                    </tr>
+                                </aura:iteration>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 container">
+                        <table class="slds-table slds-table_bordered slds-table_fixed-layout border slds-table_cell-buffer">
+                            <thead>
+                                <tr class="slds-text-title_caps">
+                                    <th scope="col" class="center">
+                                        <div class="slds-truncate">Failure Messages</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <aura:iteration items="{!v.failureMap}" var="failureObj">
+                                    <tr>
+                                        <th scope="row" class="tableRow center">
+                                            <a href="{!'/'+failureObj.key}" target="_blank">{!failureObj.key}</a> - {!failureObj.value}
+                                        </th>
+                                    </tr>
+                                </aura:iteration>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </lightning:card>
+    <!-- Container Card Section End -->
+    <!-- Modal Section Begin -->
+    <div>
+        <!-- Modal used to give a name to the new mapping while creating and store the mapping -->
+        <section aura:id="sobjectMappingModal" role="dialog" tabindex="-1" aria-labelledby="contactModalHeading" aria-modal="true" aria-describedby="contactModalBody" class="slds-modal">
+            <!-- Modal Container -->
+            <div class="slds-modal__container">
+                <!-- Modal Header ( consists of close button and heading of modal ) -->
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon class="slds-modal__close" alternativeText="Close" iconName="utility:close" onclick="{!c.closeModal}" variant="bare-inverse" size="large"></lightning:buttonIcon>
+                    <h2 id="contactModalHeading" class="slds-text-heading_medium slds-hyphenate">SObject Mapping</h2>
+                </header>
+                <!-- Modal Body ( consists of form ) -->
+                <div class="slds-modal__content slds-p-around_medium" id="contactModalBody">
+                    <lightning:input aura:id="sobjectMappingName" label="SObject Mapping Name" messageWhenValueMissing="SObject Mapping Name is Mandatory" value="{!v.recordMap[0].SObject_Mapping_Name__c}" required="true"/>
+                </div>
+                <!-- Modal Footer ( consists of cancel and save buttons ) -->
+                <footer class="slds-modal__footer">
+                    <lightning:button onclick="{!c.closeModal}" variant="neutral">Cancel</lightning:button>
+                    <lightning:button onclick="{!c.createMapping}" variant="brand" >Save</lightning:button>
+                </footer>
+            </div>
+        </section>
+        <!-- Modal Backdrop -->
+        <div aura:id="sobjectModalBackdrop" class="slds-backdrop"></div>
+    </div>
+    <!-- Modal Section End -->
+</aura:component>

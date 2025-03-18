@@ -1,0 +1,37 @@
+<apex:page controller="AccountsaveCls" id="pg">
+    <script>
+        function validateInput() {
+            let actType = document.getElementById('pg:fm:pb:act1:type').value;
+            let expiry = document.getElementById('pg:fm:pb:address1:expiry').value;
+            let sla = document.getElementById('pg:fm:pb:address1:sla').value;
+            console.log('hello');
+            // alert('actType: ' + actType + ' expiry: ' + expiry + ' sla: ' + sla);
+            if (actType == 'Technology Partner' && (expiry == '' || sla == '')) {
+                alert('please select slaExpariydate and sla');
+            }
+            else {
+                saveAction();
+            }
+
+        }
+
+    </script>
+    <apex:form id="fm">
+        <apex:actionFunction name="saveAction" action="{!saveAccount}"></apex:actionFunction>
+        <apex:pageBlock title="Action Function Example" id="pb">
+            <apex:pageBlockSection title="Account Info" id="act1">
+                <apex:inputField value="{!actObj.Name}"></apex:inputField>
+                <apex:inputField value="{!actObj.Rating}"></apex:inputField>
+                <apex:inputField value="{!actObj.Type}" id="type"></apex:inputField>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="address info" id="address1">
+                <apex:inputField value="{!actObj.SLAExpirationDate__c}" id="expiry"></apex:inputField>
+                <apex:inputField value="{!actObj.SLA__c}" id="sla"></apex:inputField>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="both">
+                <apex:commandButton value="Save" onclick="validateInput();return false;"></apex:commandButton>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+
+    </apex:form>
+</apex:page>

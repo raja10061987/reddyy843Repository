@@ -1,0 +1,11 @@
+<apex:page standardController="Account" setup="false" sidebar="false" showHeader="true" tabStyle="Order">
+
+ <chatter:feedWithFollowers entityId="{!account.Id}"/>
+ <apex:detail inlineEdit="true" relatedList="false" showChatter="false" />
+ <apex:relatedList list="contacts" pageSize="5"/>
+ <apex:relatedList list="Opportunities" pageSize="5"/>
+ <apex:relatedList list="cases" pageSize="5"/>
+ <apex:relatedList list="contacts" pageSize="5"/>
+ <apex:relatedList list="ProcessSteps" pageSize="5"/>
+ <apex:relatedList list="CombinedAttachments" pageSize="5"/>
+</apex:page>

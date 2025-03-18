@@ -1,0 +1,29 @@
+<apex:page controller="withActionregionController" setup="false" sidebar="false" showHeader="true" tabStyle="account">
+    <apex:sectionHeader title="action region" subtitle="action region example"/>
+    <apex:form id="form">
+        <apex:pageBlock id="pageId">
+        <apex:pageBlockSection >
+           <apex:pageBlockSectionItem >
+         <apex:outputLabel value="{!$ObjectType.Account.fields.CustomerPriority__c.label}" for="priority"></apex:outputLabel>
+            <apex:actionRegion >
+            <apex:inputField value="{!acc.CustomerPriority__c}" id="priority">
+                <apex:actionSupport action="{!priorityChanged}" reRender="pageId" event="onchange" />
+                </apex:inputField>
+           </apex:actionRegion>
+               </apex:pageBlockSectionItem>
+            <apex:inputField value="{!acc.phone}" rendered="{!showPhone}"/>
+       </apex:pageBlockSection>
+            
+       <apex:pageBlockSection title="account information" columns="2" collapsible="false">
+            <apex:inputField value="{!acc.name}"/>
+           <apex:inputField value="{!acc.rating}"/>
+           <apex:inputField value="{!acc.industry}"/>
+           
+            
+      </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+       
+    
+    </apex:form>
+</apex:page>

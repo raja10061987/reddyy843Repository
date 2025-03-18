@@ -1,0 +1,26 @@
+<apex:page standardController="account" setup="false" sidebar="false" tabStyle="Lead">
+  <apex:tabPanel switchType="ajax">
+  <apex:tab label="Account Details" name="tbAccountDetails">
+   <apex:detail relatedList="false" inlineEdit="true" title="true" />
+  </apex:tab>
+  <apex:tab label="contacts" name="tbContactDetails">
+  <apex:relatedList list="contacts" pageSize="5"/>
+  </apex:tab>
+  <apex:tab label="opportunities" name="tbOpportunityDetails" >
+  <apex:relatedList list="opportunities"/>
+  </apex:tab>
+  <apex:tab label="cases" title="cases" name="tabcases" >
+  <apex:relatedList list="cases" pageSize="5"/>
+  </apex:tab>
+  <apex:tab label="Open Activities" title="cases" name="tbActivities" >
+  <apex:relatedList list="OpenActivities" pageSize="5"/>
+  </apex:tab>
+  <apex:tab name="tbattachments" label="notes & attachments">
+  <apex:relatedList list="CombinedAttachments" pageSize="5"/>
+  </apex:tab>
+  <apex:tab label="ApprovalHistory" name="tbApprovalHistory">
+  <apex:relatedList list="ProcessSteps" pageSize="5"/>
+  </apex:tab>
+  
+  </apex:tabPanel>
+</apex:page>

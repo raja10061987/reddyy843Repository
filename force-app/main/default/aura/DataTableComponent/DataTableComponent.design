@@ -1,0 +1,5 @@
+<design:component label="Contact DataTable">
+<design:attribute name="recordId" label="Account Id"></design:attribute>
+<design:attribute name="selectedRows" label="selected Rows" description="provide the values with comma seperated"></design:attribute>
+<design:attribute name="maxRowSelection" label="max number of records to be selected" dataSource="1,2,5,7,10,15"></design:attribute>
+</design:component>

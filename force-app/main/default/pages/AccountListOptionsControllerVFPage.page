@@ -1,0 +1,27 @@
+<apex:page controller="AccountListOptionsController" setup="false" sidebar="false" showHeader="true" tabStyle="account">
+    <apex:sectionHeader title="action support example" subtitle="action support"/>
+    <apex:form >
+    <apex:pageBlock title="select account Name">
+        <apex:pageBlockSection title="select account name">
+        <apex:selectList value="{!selectedaccountId}" label="select account name" size="1">
+            <apex:actionSupport action="{!getRelatedContactsByAccountId}" event="onchange" reRender="pageBlock"/>
+            <apex:selectOptions value="{!optionList}"></apex:selectOptions>
+       </apex:selectList>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+        <apex:pageBlock title="display contacts related account:size: {!contList.size}" id="pageBlock">
+         <p style="color:red">{!isContactsAvailable}</p>
+            <apex:pageBlockTable value="{!contList}" var="contObj">
+                <apex:column headerValue="contact Name" >
+                    <apex:outputLink value="/{!contObj.id}" target="_blank">{!contObj.FirstName}{!contObj.LastName}</apex:outputLink>
+                </apex:column>
+            <apex:column value="{!contObj.name}" headerValue="my contact name"/>
+            <apex:column value="{!contObj.FirstName}" headerValue="First Name"/>
+            <apex:column value="{!contObj.LastName}" headerValue="Last Name"/>
+            <apex:column value="{!contObj.email}" headerValue="Email"/>
+            <apex:column value="{!contObj.phone}" headerValue="contact Phone"/>
+             <apex:column value="{!contObj.fax}" headerValue="contact Fax"/>
+          </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

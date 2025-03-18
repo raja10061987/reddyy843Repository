@@ -1,0 +1,35 @@
+<template>
+    <lightning-card title="Contatct Form Edit Only">
+      <lightning-record-edit-form record-id="0035g00000jDAIzAAO" density="comfy" object-api-name={objectApiName} onload={handleLoad} onsubmit={handleSubmit} onsuccess={handleSuccess} onerror={hadleError}>
+       <lightning-layout multiple-rows>
+      <lightning-layout-item size="12">
+        <lightning-messages></lightning-messages>
+      </lightning-layout-item>
+        
+
+        <lightning-layout-item size="12">
+            <lightning-input-field field-name="Name"></lightning-input-field>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12">
+            <lightning-input-field field-name="MobilePhone"></lightning-input-field>
+            <lightning-input-field field-name="Email"></lightning-input-field>
+        </lightning-layout-item>
+
+
+          <lightning-layout-item size="12">
+           <lightning-input-field field-name="Birthdate"></lightning-input-field>
+           <lightning-input-field field-name="Department"></lightning-input-field>
+          </lightning-layout-item>
+        
+
+          <lightning-layout-item size="12" class="slds-align_absolute-center">
+        <lightning-button label="Cancel" class="slds-m-right_small" onclick={resetForm}></lightning-button>
+        <lightning-button type="submit" label="save" variant="brand"></lightning-button>
+          </lightning-layout-item>
+
+       </lightning-layout>
+      
+      </lightning-record-edit-form>
+    </lightning-card>
+</template>

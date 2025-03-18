@@ -1,0 +1,14 @@
+<aura:component>
+<aura:attribute name="title" type="string" default="calculator Result"></aura:attribute>
+<aura:attribute name="result" type="integer"></aura:attribute>
+<!-- <aura:registerEvent name="appEvent" type="c:CalculatorApplicationEvent"></aura:registerEvent> -->
+<aura:handler event="c:CalculatorApplicationEvent" action="{!c.getResult}"></aura:handler>
+<lightning:card>
+    <aura:set attribute="title">
+    <lightning:icon iconName="utility:connected_apps" size="small"></lightning:icon>
+    {!v.title}
+    </aura:set>
+    <lightning:input type="number" label="Result" value="{!v.result}" ></lightning:input>
+</lightning:card>
+
+</aura:component>

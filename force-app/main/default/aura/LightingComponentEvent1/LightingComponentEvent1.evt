@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT">
+<aura:attribute name="totalIncome" type="decimal"></aura:attribute>
+
+</aura:event>

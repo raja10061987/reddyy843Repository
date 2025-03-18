@@ -1,0 +1,25 @@
+<aura:component implements="lightning:availableForFlowScreens" controller="ApexHoursController">
+
+<aura:attribute name="data" type="Object"></aura:attribute>
+<aura:attribute name="columns" type="List"></aura:attribute>
+
+<aura:attribute name="recordId" type="String" access="global"></aura:attribute>
+<aura:attribute name="selectedRows" type="String"></aura:attribute>
+<aura:attribute name="maxRowSelection" type="String"></aura:attribute>
+
+<aura:attribute name="selectedRowsList" type="String"></aura:attribute>
+<aura:attribute name="validate" type="Aura.Action" description="some description"></aura:attribute>
+
+<aura:handler name="init" value="{!this}" action="{!c.doInt}"></aura:handler>
+
+<lightning:datatable keyField="Id" 
+                      data="{!v.data}" 
+                      columns="{!v.columns}" 
+                      selectedRows="{!v.selectedRowsList}"
+                      maxRowSelection="{!v.maxRowSelection}"
+                      onrowselection="{!c.getSelectedRecord}"
+                      >
+
+</lightning:datatable>
+
+</aura:component>

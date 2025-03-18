@@ -1,0 +1,11 @@
+<apex:page controller="ProductController" setup="false" sidebar="false" showHeader="true" tabStyle="Order">
+ productName: {!productName}<br/>
+ productCode: {!productCode}<br/>
+ ProductQuantity: {!productQuantity}<br/>
+ manufacturer: {!manufacturer}<br/>
+ unitPrice: {!unitPrice}<br/>
+ ManufacturingDate: {!ManufacturingDate}<br/>
+ ExpiryDate: {!ExpiryDate}<br/>
+ isInstock: {!isInstock}
+
+</apex:page>

@@ -1,0 +1,15 @@
+/* 
+styling hooks */
+.my-button1{
+    --slds-c-button-destructive-color-background:purple;
+    --slds-c-button-destructive-color-border:purple;
+    --slds-c-button-destructive-color-background-hover: black;
+}
+.my-badge{
+    --slds-c-badge-color-background:purple;
+    --slds-c-badge-text-color:white;
+}
+.my-progress-bar
+{
+    background-color: rgb(0, 255, 106);
+}

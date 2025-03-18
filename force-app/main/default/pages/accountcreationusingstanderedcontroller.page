@@ -1,0 +1,28 @@
+<apex:page standardController="Account" extensions="AccountRecords" showHeader="false">
+    <apex:form >
+        <apex:pageBlock title="company info">
+            <apex:pageblocksection title="account info" collapsible="false">
+                <apex:inputField value="{!Account.Name}" />
+                <apex:inputfield value="{!Account.Type}" />
+                <apex:inputfield value="{!Account.Rating}" />
+            </apex:pageblocksection>
+            <apex:pageBlockSection title="address info">
+                <apex:inputfield value="{!Account.Active__c}" />
+                <apex:inputfield value="{!Account.Budget__c}" />
+                <apex:inputfield value="{!Account.SLA__c}" />
+                <apex:inputfield value="{!Account.SLAExpirationDate__c}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!save}" value="save" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        <apex:pageBlock title="list of the records">
+            <apex:pageBlockTable value="{!actList}" var="actObj">
+                <apex:column value="{!actObj.Name}" />
+                <apex:column value="{!actObj.Type}" />
+                <apex:column value="{!actObj.Rating}" />
+                <apex:column value="{!actObj.phone}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,9 @@
+<aura:component controller="PickListUtilController">
+<aura:handler name="init" value="{!this}" action="{!c.loadContacts}"></aura:handler>
+<aura:attribute name="options" type="List" default="[{'label': 'New',value: 'New'},{'label':'in progress','value': 'in progress'},{'label':'finished','value':'finished'}]"></aura:attribute>
+<aura:attribute name="optionSelected" type="string" default="" ></aura:attribute>
+<lightning:combobox name="progress" label="contact Name"  value="{!v.optionSelected}" placeholder="please select contact Name" options="{!v.options}"></lightning:combobox>
+<div>
+    selected Option: <b>{!v.optionSelected}</b>
+</div>
+</aura:component>

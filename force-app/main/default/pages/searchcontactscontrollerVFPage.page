@@ -1,0 +1,26 @@
+<apex:page controller="searchcontactscontroller" setup="false" sidebar="false" showHeader="true" tabStyle="contact">
+    <apex:sectionHeader title="get the contacts" subtitle="contacts search"/>
+    <apex:form >
+    <apex:actionFunction name="searchcontacts" action="{!getsearchContacts}" reRender="pageBlock" status="contStatus" />
+    <apex:pageBlock title="enter the contact Name">
+        <apex:pageBlockSection title="please enter the account name" collapsible="false">
+        <apex:inputText label="enter the contact name"   value="{!searchText}" onkeydown="{getsearchContacts}" />
+        <apex:commandButton value="search" onclick="searchcontacts(); return false;"/>
+      </apex:pageBlockSection>
+   </apex:pageBlock>
+       
+      <apex:pageBlock title="display records: size: ({!contList.size})" id="pageBlock">
+          <apex:pageBlockTable value="{!contList}" var="contObj">
+          <apex:column value="{!contObj.name}" headerValue="contact Name"/>
+          <apex:column value="{!contObj.firstName}" headerValue="contact first Name"/>
+          <apex:column value="{!contObj.lastName}" headerValue="last Name"/>
+          <apex:column value="{!contObj.email}" headerValue="contact email"/>
+          <apex:column value="{!contObj.phone}" headerValue="contact phone"/>
+          <apex:column value="{!contObj.fax}" headerValue="contact fax"/>
+          </apex:pageBlockTable>
+          <apex:actionStatus id="contStatus" startText="contacts are loading....please wait...." stopText="Contacts ready" style="color:red"></apex:actionStatus>
+          <p style="color:red">{!nosearchText}</p>
+     </apex:pageBlock>
+    
+    </apex:form>
+</apex:page>

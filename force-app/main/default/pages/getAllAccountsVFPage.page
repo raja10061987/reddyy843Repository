@@ -1,0 +1,14 @@
+<apex:page controller="getAllAccounts" setup="false" sidebar="false" showHeader="true" tabStyle="Account">
+<apex:sectionHeader title="show sharing/non sharing records" subtitle="show records" />
+<apex:form >
+ <apex:pageBlock title="records size: {!actList.size}">
+ <apex:pageBlockTable value="{!actList}" var="actObj">
+  <apex:column value="{!actObj.name}"/>
+  <apex:column value="{!actObj.rating}"/>
+  <apex:column value="{!actObj.phone}"/>
+  <apex:column value="{!actObj.AnnualRevenue}"/>
+  <apex:column value="{!actObj.Active__c}"/>
+ </apex:pageBlockTable>
+ </apex:pageBlock>
+</apex:form>
+</apex:page>

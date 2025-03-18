@@ -1,0 +1,18 @@
+<apex:page controller="searchAccountRecordsController1" setup="false" sidebar="false" showHeader="true" tabStyle="account" >
+  <apex:sectionHeader title="search records" subtitle="search account records"/>
+  <apex:form >
+  <apex:pageMessages id="errors"></apex:pageMessages>
+   <apex:pageblock title="search records">
+   <apex:inputText label="Enter account Name" html-placeholder="enter search text" value="{!searchText}"/>   
+   <apex:commandButton value="search records" action="{!searchAccountRecords}" reRender="pageBlock,errors" />
+   </apex:pageblock>
+   <apex:pageBlock title="search results: {!actList.size}" id="pageBlock">
+   <apex:pageBlockTable value="{!actList}" var="actObj">
+   <apex:column value="{!actObj.name}" />
+   <apex:column value="{!actObj.phone}"/>
+   <apex:column value="{!actObj.Service_Tax__c}"/>
+   <apex:column value="{!actObj.AnnualRevenue}"/>
+   </apex:pageBlockTable>
+   </apex:pageBlock>
+  </apex:form>
+</apex:page>

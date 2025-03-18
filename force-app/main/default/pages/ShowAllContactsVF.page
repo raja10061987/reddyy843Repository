@@ -1,0 +1,12 @@
+<apex:page controller="ShowAllContactsController" setup="false" sidebar="false" showHeader="true" tabStyle="account">
+    <apex:sectionHeader title="ShowAllContactsController" subtitle="ShowAllContacts"/>
+    <apex:form >
+    <apex:pageBlock title=" total contacts: ({!contList.size})">
+    <apex:pageBlockTable value="{!contList}" var="contObj">
+    <apex:column value="{!contObj.Name}"/>
+    <apex:column value="{!contObj.LastName}"/>
+    <apex:column value="{!contObj.FirstName}"/>
+    </apex:pageBlockTable>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

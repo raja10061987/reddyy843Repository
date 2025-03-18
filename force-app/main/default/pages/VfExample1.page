@@ -1,0 +1,57 @@
+<apex:page setup="false" standardController="account" sidebar="false" showHeader="true" tabStyle="Employee__c">
+ <apex:sectionHeader title="visual force page tags" subtitle="visual force properties"/>
+ <apex:form >
+  <apex:pageBlock title="Account Details">
+  <apex:pageBlockButtons location="both" >
+  <apex:commandButton value="save" action="{!Save}"/>
+  <apex:commandButton value="save & New" action="{!save}"/>
+  <apex:commandButton value="Search"/>
+  <apex:commandButton value="cancel" action="{!cancel}"/>&nbsp;&nbsp;
+  <b>
+  <apex:commandLink value="First"/>&nbsp;&nbsp;
+  <apex:commandLink value="previous"/>&nbsp;&nbsp;
+  <apex:commandLink value="Last"/>&nbsp;&nbsp;
+  <apex:commandLink value="Next"/>
+  </b>
+  </apex:pageBlockButtons>
+  <apex:pageBlockSection title="Account information" columns="2" collapsible="true">
+   <apex:inputField value="{!Account.Name}"/>
+   <apex:inputField value="{!Account.Rating}"/>
+   <apex:inputField value="{!Account.parentid}"/>
+   <apex:inputField value="{!Account.phone}"/>
+   <apex:inputField value="{!Account.accountNumber}"/>
+   <apex:inputField value="{!account.website}"/>
+   <apex:inputField value="{!Account.Site}"/>
+   <apex:inputField value="{!Account.TickerSymbol}"/>
+   <apex:inputField value="{!Account.Type}"/>
+   <apex:inputField value="{!ACCOUNT.Ownership}"/>
+   <apex:inputField value="{!Account.Budget__c}"/>
+   <apex:inputField value="{!Account.sic}"/>
+  </apex:pageBlockSection>
+  <apex:pageBlockSection title="Address information">
+  <apex:inputField value="{!Account.BillingStreet}"/>
+  <apex:inputField value="{!Account.shippingStreet}"/>
+  <apex:inputField value="{!Account.BillingCity}"/>
+  <apex:inputField value="{!Account.shippingCity}"/>
+  <apex:inputField value="{!Account.billingpostalcode}"/>
+  <apex:inputField value="{!Account.shippingpostalCode}"/>
+  <apex:inputField value="{!Account.billingCountry}"/>
+  <apex:inputField value="{!Account.shippingCountry}"/>
+  <apex:inputField value="{!Account.Both_addresses_are_same__c}"/>
+  </apex:pageBlockSection>
+  <apex:pageBlockSection title="Additional information" columns="2" collapsible="true">
+  <apex:inputField value="{!Account.CustomerPriority__c}"/>
+  <apex:inputField value="{!Account.SLA__c}"/>
+  <apex:inputField value="{!Account.SLAExpirationDate__c}"/>
+  <apex:inputField value="{!Account.SLASerialNumber__c}"/>
+  <apex:inputField value="{!Account.No_Of_Contacts__c}"/>
+  <apex:inputField value="{!Account.UpsellOpportunity__c}"/>
+  <apex:inputField value="{!Account.Active__c}"/>
+  </apex:pageBlockSection>
+  <apex:pageBlockSection title="description information" columns="2" collapsible="false">
+  <apex:inputField value="{!Account.description}"/>
+  </apex:pageBlockSection>
+  </apex:pageBlock>
+  
+ </apex:form>
+</apex:page>

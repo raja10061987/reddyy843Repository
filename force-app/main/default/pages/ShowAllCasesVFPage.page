@@ -1,0 +1,21 @@
+<apex:page controller="ShowAllCasesController"  setup="false" sidebar="false" tabStyle="Hiring_Manager__c">
+  <apex:sectionHeader title="CaseRecords" subtitle="list of cases" />
+  <apex:form >
+  <apex:pageblock title="caseList count: {!caseRecords.size}">
+  <apex:pageblockButtons location="both" >
+  <apex:commandButton value="get Case Records" action="{!getCaseRecords}"/>
+  </apex:pageblockButtons>
+  <apex:pageBlockTable value="{!caseRecords}" var="caseRecord">
+  <apex:column headerValue="caseNumber" >
+  <apex:outputLink value="/{!caseRecord.Id}" target="_new" >{!caseRecord.caseNumber}</apex:outputLink>
+  </apex:column>
+  <apex:column value="{!caseRecord.Type}"/>
+  <apex:column value="{!caseRecord.Status}"/>
+  <apex:column value="{!caseRecord.Reason}"/>
+  <apex:column value="{!caseRecord.origin}"/>
+  <apex:column value="{!caseRecord.Subject}"/>
+  <apex:column value="{!caseRecord.Priority}"/>
+  </apex:pageBlockTable>
+  </apex:pageblock>
+  </apex:form>
+</apex:page>

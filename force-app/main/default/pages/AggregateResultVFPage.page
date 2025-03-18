@@ -1,0 +1,16 @@
+<apex:page controller="AggregateResultController">
+    <h1>Lead details</h1>
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!aggregateResultList}" var="aggreObj">
+            <apex:column value="{!aggreObj['leadCount']}">
+            <apex:facet name="header">Lead Count</apex:facet>
+            </apex:column>
+            <apex:column value="{!aggreObj['status']}">
+            <apex:facet name="header"> Status</apex:facet>
+            </apex:column>
+            <apex:column value="{!aggreObj['totalAnnaulAmount']}">
+            <apex:facet name="header">Annoual Amount</apex:facet>
+            </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>

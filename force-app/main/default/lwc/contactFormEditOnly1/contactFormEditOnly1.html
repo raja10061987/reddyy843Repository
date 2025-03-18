@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="Lightning card Editable">
+     <div class="slds-p-horizontal_small">
+      <lightning-layout multiple-rows>
+      <template for:each={contactFields} for:item="eachField">
+      <lightning-layout-item size="12" key={eachField.key}>
+        <lightning-input label={eachField.label} value={eachField.value} name={eachField.apiName} onchange={updateContactField} ></lightning-input>
+      </lightning-layout-item>
+      </template>
+      
+
+    <lightning-layout-item size="12"  class="slds-align_absolute-center slds-p-top_small">
+       <lightning-button label="cancel" onclick={resetForm} class="slds-m-right_small"></lightning-button>
+       <lightning-button label="Save" type="submit" variant="brand"  onclick={updateRecord}></lightning-button>
+    </lightning-layout-item>
+
+
+      </lightning-layout>
+     </div>
+    </lightning-card>
+</template>

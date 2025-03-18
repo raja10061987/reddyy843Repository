@@ -1,0 +1,27 @@
+<apex:page controller="WrapperExample" contentType="application/vnd.ms-excel">
+    <apex:form >
+        <apex:pageBlock title="List of Account Records: ({!wrapperList.size})">
+            <apex:pageBlockTable value="{!wrapperList}" var="wrapObj">
+                <apex:column headerValue="select">
+                    <apex:inputCheckbox value="{!wrapObj.isChecked}"></apex:inputCheckbox>
+                </apex:column>
+                <apex:column headerValue="Act Name" value="{!wrapObj.actName}"></apex:column>
+                <apex:column headerValue="Act Phone" value="{!wrapObj.actPhone}"></apex:column>
+                <apex:column headerValue="Act Rating" value="{!wrapObj.actRating}"></apex:column>
+            </apex:pageBlockTable>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Display Selected Records" action="{!displaySelectedRecords}" reRender="displayRecordsBlock"></apex:commandButton>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+
+        <apex:pageBlock title="selected records" id="displayRecordsBlock">
+            <apex:pageBlockTable value="{!selectedWrapperList}" var="selectedWrapperObj">
+                <apex:column headerValue="Act Name" value="{!selectedWrapperObj.actName}"></apex:column>
+                <apex:column headerValue="Act Phone" value="{!selectedWrapperObj.actPhone}"></apex:column>
+                <apex:column headerValue="Act Rating" value="{!selectedWrapperObj.actRating}"></apex:column>
+
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+
+    </apex:form>
+</apex:page>

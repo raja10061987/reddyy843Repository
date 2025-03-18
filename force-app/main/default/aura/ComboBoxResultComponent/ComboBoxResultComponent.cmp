@@ -1,0 +1,10 @@
+<aura:component>
+    <aura:attribute name="pickListValue" type="String"></aura:attribute>
+<!-- 
+<aura:registerEvent name="cmpEvent" type="c:selectedValComponentEvent"></aura:registerEvent>
+<aura:handler name="cmpEvent" type="c:selectedValComponentEvent" action="{!c.handleAction}" ></aura:handler> -->
+<c:ComboBoxComponent cmpEvent="{!c.handleAction}" ></c:ComboBoxComponent>
+<h1>Comobo Box Result value: </h1>
+<span>{!v.pickListValue}</span>
+
+</aura:component>

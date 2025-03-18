@@ -1,0 +1,17 @@
+<aura:component controller="QueryApexUtil" implements="flexipage:availableForAllPageTypes">
+<aura:attribute name="sObjectName" type="string"  default="Account"></aura:attribute>
+<aura:attribute name="recordList" type="List"></aura:attribute>
+<aura:attribute name="columns" type="List"></aura:attribute>
+<aura:attribute name="title" type="string" default="Account Records"></aura:attribute>
+<aura:attribute name="description" type="string" default="welcome Rajasekhar"></aura:attribute>
+<aura:handler name="init" value="{!this}" action="{!c.loadObjectRecords}"></aura:handler>
+
+<div style="height: 300px;">
+    <b>{!v.title}</b>
+<lightning:datatable keyField="Id" data="{!v.recordList}" columns="{!v.columns}" hideCheckboxColumn="true"></lightning:datatable>
+<div>{!v.description}</div>
+</div>
+
+
+
+</aura:component>

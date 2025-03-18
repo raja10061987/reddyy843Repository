@@ -1,0 +1,11 @@
+<apex:page >
+    <apex:includeLightning ></apex:includeLightning>
+    <div id="lightning"></div>
+    <script>
+        $Lightning.use('c:LWFWithVF', function () {
+            $Lightning.createComponent('c:contactForm', {}, 'lightning', function (comp) {
+               
+            });
+        });
+    </script>
+</apex:page>

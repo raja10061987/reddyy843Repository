@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="create Contact" icon-name="standard:contact">
+     <div class="slds-p-horizontal_small">
+     <lightning-input label="LastName" value={name} onchange={handleChange} class="slds-m-bottom_x-small slds-p-horizontal_small slds-form-element"></lightning-input>
+     <lightning-input label="Phone" value={phone} onchange={handleChange} class="slds-m-bottom_x-small slds-p-horizontal_small slds-form-element"></lightning-input>
+     <c-custom-look-up onselected={handleSelected}></c-custom-look-up><br/>
+     <lightning-button label="create contact" variant="brand" onclick={createContact} class="slds-m-bottom_x-small slds-p-horizontal_small slds-form-element"></lightning-button>
+     </div>
+    </lightning-card>
+</template>

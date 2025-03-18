@@ -1,0 +1,11 @@
+<design:component >
+<design:attribute name="title" label="please enter title"></design:attribute>
+<design:attribute name="description" label="please enter description"></design:attribute>
+<design:attribute name="sObjectName" label="please specify Object Name" description="it is Object" datasource="apex://QueryApexUtil"></design:attribute>
+</design:component>
+
+<!-- 
+<design:component label="Hello World">
+    <design:attribute name="subject" label="Subject" description="Name of the person you want to greet" />
+    <design:attribute name="greeting" label="Greeting" />
+</design:component> -->

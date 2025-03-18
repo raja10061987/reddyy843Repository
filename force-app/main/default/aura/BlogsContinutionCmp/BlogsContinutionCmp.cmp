@@ -1,0 +1,32 @@
+<aura:component controller="BlogsContinutionLightningController">
+<h1>this is BlogsContinution Component123</h1>
+<aura:handler action="{!c.doInit}" name="init" value="{!this}" ></aura:handler>
+<aura:attribute name="columns" type="list"></aura:attribute>
+<aura:attribute name="blogdata" type="Object"></aura:attribute>
+<aura:attribute name="appdata" type="Object"></aura:attribute>
+<aura:attribute name="sessiondata" type="Object"></aura:attribute>
+
+<!-- dis playing blogs -->
+<lightning:card title="{!v.blogdata.author + ' Blogs List'}">
+<p class="slds-p-horizontal-small">
+<lightning:datatable data="{!v.blogdata.blogs}" columns="{!v.columns}" keyField="id" hideCheckboxColumn="true">
+
+</lightning:datatable>
+</p>
+</lightning:card>
+
+<!-- displaying Apps -->
+<lightning:card title="{!v.appdata.author + '  apps List'}">
+<lightning:datatable data="{!v.appdata.apps}" columns="{!v.columns}" keyField="id" hideCheckboxColumn="true"></lightning:datatable>
+</lightning:card>
+
+
+<!-- displaying sessions -->
+<lightning:card title="{!v.sessiondata.author + ' session List'}">
+ <p class="slds-p-horizontal_small">
+  <lightning:datatable data="{!v.sessiondata.sessions}" columns="{!v.columns}" keyField="Id" hideCheckboxColumn="true">
+
+  </lightning:datatable>
+ </p>
+</lightning:card>
+</aura:component>

@@ -1,0 +1,27 @@
+<template>
+    <div style="width: 300px;">
+      <lightning-card title="Details">
+       <lightning-button label="New" slot="actions"></lightning-button>
+       <p class="slds-p-horizontal_small">
+        <lightning-button variant="destructive" class="slds-p-around_large" label="my bitton" title="my button1"></lightning-button>
+        <br/><br/>
+        <lightning-button class="my-button" variant="destructive" label="my button color purple"></lightning-button>
+        <lightning-badge label="alpha1" class="slds-theme_error"></lightning-badge>
+        <br/><br/>
+        <lightning-badge class="my-badge" label="purple color"></lightning-badge>
+        <!-- <lightning-progress-bar value="50" size="large"></lightning-progress-bar> -->
+       </p>
+       <p slot="footer">card footer</p>
+       <div class="slds-progress-bar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="25"  role="progressbar">
+        <span class="slds-progress-bar__value my-progress-bar" style="width:25%">
+        <span class="slds-assistive-text">Progress: 25%</span>
+        </span>
+        </div>
+
+
+
+
+
+      </lightning-card>
+    </div>
+</template>

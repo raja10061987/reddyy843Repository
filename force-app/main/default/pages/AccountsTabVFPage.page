@@ -1,0 +1,48 @@
+<apex:page controller="AccountTabController" setup="false" sidebar="false" showHeader="false" lightningStylesheets="true">
+    <apex:includeScript value="/support/console/54.0/integration.js"></apex:includeScript>
+    <apex:form >
+        <apex:pageBlock id="pb">
+            <apex:pageBlockTable value="{!actList}" var="actObj">
+                <apex:column headerValue="account Name">
+                    <apex:commandLink value="{!actObj.Name}" action="{!retriveLatestRecords}" reRender="pb" oncomplete="openTabs('{!currentAccountName}','{!currentAccountId}','{!contactId}','{!contactName}','{!caseId}','{!caseNumber}')">
+                        <apex:param value="{!actObj.Id}" name="currentAccountId" assignTo="{!currentAccountId}"></apex:param>
+                        <apex:param value="{!actObj.Name}" name="currentAccountName" assignTo="{!currentAccountName}"></apex:param>
+                    </apex:commandLink>
+                </apex:column>
+                <apex:column headerValue="Rating" value="{!actObj.Rating}"></apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+    <script>
+        let contactId;
+        let contactName;
+        let caseId;
+        let caseNumber;
+
+        function openTabs(accountName, accountId, contactId, contactName, caseId, caseNumber) {
+            alert('accountName: ' + accountName + ' accountId ' + accountId + ' contactId  ' + contactId + ' contactName ' + contactName + ' caseId ' + caseId + ' caseNumber ' + caseNumber);
+            // sforce.console.openPrimaryTab(id:String, url:URL, active:Boolean, (optional)tabLabel:String, (optional)callback:Function, (optional)name)
+            sforce.console.openPrimaryTab(null, '/' + accountId, true, accountName, openContactTab, accountName);
+            contactId = contactId;
+            contactName = contactName;
+            caseId = caseId;
+            caseNumber = caseNumber;
+        }
+
+        function openContactTab(result) {
+            alert('primaryTabId: ' + result);
+            let primaryTabId = result.Id;
+            if (contactId) {
+                // sforce.console.openSubtab(primaryTabId:String, url:URL, active:Boolean, tabLabel:String, id:String, (optional)callback:Function, (optional)name:String)
+                sforce.console.openSubtab(primaryTabId, '/' + contactId, true, contactName, null, null, contactName);
+
+            }
+
+            if (caseId) {
+                // sforce.console.openSubtab(primaryTabId:String, url:URL, active:Boolean, tabLabel:String, id:String, (optional)callback:Function, (optional)name:String)
+                sforce.console.openSubtab(primaryTabId, '/' + caseId, true, caseNumber, null, null, caseNumber);
+            }
+
+        }
+    </script>
+</apex:page>

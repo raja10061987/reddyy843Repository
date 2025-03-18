@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Publish_LWC">
+     <p class="slds-p-horizontal_small">
+      <template for:each={result} for:item="eachAccount" for:index="index">
+         <span key={eachAccount.Id}>
+          <a href="#" data-recordid={eachAccount.Id} onclick={handleClick}>{eachAccount.Name}</a><br/>
+         </span>
+      </template>
+     </p>
+    </lightning-card>
+</template>

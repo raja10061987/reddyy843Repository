@@ -1,0 +1,31 @@
+<aura:component>
+<aura:attribute name="accountRecords" type="account[]"></aura:attribute>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<ltng:require styles="{$Resource.bootstrapminFile}"></ltng:require>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+<c:ComponentMethod aura:id="child"></c:ComponentMethod>
+<aura:if isTrue="{!v.accountRecords.length > 0}">
+    <b>account Records</b>
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <aura:iteration items="{!v.accountRecords}" var="item">
+            <tr>
+                <td>{!item.Email}</td>
+            </tr>
+            </aura:iteration>
+    </tbody>
+    </table>
+   
+
+    <aura:set attribute="else">
+      <b>No records present to display.. please clik me button</b>
+    </aura:set>
+</aura:if>
+<br/>
+<lightning:button label="Click Me" onclick="{!c.callAuraMethodServerTrip}"></lightning:button>
+</aura:component>

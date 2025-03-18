@@ -1,0 +1,13 @@
+<apex:page controller="DynamicsColumnController">
+    <apex:form >
+        <apex:pageBlock title="Dynamic Columns">
+            <apex:pageBlockTable value="{!actList}" var="actObj">
+                <apex:repeat value="{!$ObjectType.Account.FieldSets.Account_Fields}" var="fieldApiName">
+                    <apex:column headerValue="{!$ObjectType.Account.Fields[fieldApiName].Label}" value="{!actObj[fieldApiName]}">
+
+                    </apex:column>
+                </apex:repeat>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

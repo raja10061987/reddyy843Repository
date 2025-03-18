@@ -1,0 +1,21 @@
+<aura:component controller="AccountListController">
+<aura:attribute name="actList" type="Account[]"></aura:attribute>
+<aura:attribute name="myColumns" type="List"></aura:attribute>
+<aura:attribute name="maxRowSelection" type="integer" default="6"></aura:attribute>
+<aura:attribute name="selectedRowsCount" type="integer" default="0"></aura:attribute>
+<aura:handler name="init" value="{!this}" action="{!c.retriveAccounts}"></aura:handler>
+<!-- 
+<div style="height: 300px">
+<lightning:datatable keyField="Id" columns="{!v.myColumns}" data="{!v.actList}" hideCheckboxColumn="true">
+
+</lightning:datatable>
+</div> -->
+
+
+<div style="height: 300px">
+    <h1> selected Rows Count: {!v.selectedRowsCount}</h1>
+    <lightning:datatable keyField="Id" columns="{!v.myColumns}" data="{!v.actList}" onrowselection="{!c.updateselectedRowsCount}"  maxRowSelection="{!v.maxRowSelection}">
+    
+    </lightning:datatable>
+    </div>
+</aura:component>

@@ -1,0 +1,15 @@
+<apex:page controller="SampleTargetController" setup="false" sidebar="false" tabStyle="Employee__c">
+  <apex:sectionHeader title="Page Redirection" subtitle="my target page"/>
+  <apex:form >
+  <apex:pageblock title="Target Page">
+  <apex:pageBlockButtons >
+   <apex:commandButton value="Redirect to Source Page" action="{!goToSourcePage}"/>
+  </apex:pageBlockButtons>
+  <apex:pageBlockSection >
+   <apex:inputText label="account Name" value="{!actName}"/>
+   <apex:inputText label="Location" value="{!Location}"/>
+   <apex:inputtext label="Rating" value="{!Rating}"/>
+  </apex:pageBlockSection>
+  </apex:pageblock>
+  </apex:form>
+</apex:page>

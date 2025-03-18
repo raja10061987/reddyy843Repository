@@ -1,0 +1,35 @@
+<aura:component controller="LightningAuraPropertiesController">
+<aura:attribute name="wrapperObj" type="Object"></aura:attribute>
+<aura:handler name="init" value="{!this}" action="{!c.LoadAuraObject}" ></aura:handler>
+<lightning:card>
+    <aura:set attribute="title">
+     <lightning:icon iconName="standard:account" size="small"></lightning:icon>
+     Contact Details
+    </aura:set>
+</lightning:card>
+<br/>
+<div>
+    name: <ui:outputText value="{!v.wrapperObj.name}"></ui:outputText>
+</div>
+<div>
+    srNumber: <ui:outputText value="{!v.wrapperObj.srNumber}"></ui:outputText>
+</div>
+<div>
+    industry: <ui:outputText value="{!v.wrapperObj.industry}"></ui:outputText>
+</div>
+<div>
+    companyName: <ui:outputText value="{!v.wrapperObj.companyName}"></ui:outputText>
+</div>
+
+
+<br/>
+<div>
+    <b> top 5 Account names  </b>
+</div>
+<br/>
+<div>
+    <aura:iteration items="{!v.wrapperObj.actList}" var="actObj">
+      <span>{!actObj.Name}</span><br/><br/>
+    </aura:iteration>
+</div>
+</aura:component>

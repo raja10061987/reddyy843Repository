@@ -1,0 +1,17 @@
+<apex:page standardController="Account" setup="false" sidebar="false" tabStyle="Account">
+  <chatter:feedWithFollowers entityId="{!Account.Id}"/>
+  <apex:tabPanel switchType="ajax">
+  <apex:tab label="Account Detail">
+  <apex:detail relatedList="false" inlineEdit="true" />
+  </apex:tab>
+  <apex:tab label="cases" name="tbCases">
+  <apex:relatedList list="cases" pageSize="5"/>
+  </apex:tab>
+  <apex:tab label="opportunities" name="tbOpportunities">
+  <apex:relatedList list="opportunities" pageSize="5"/>
+  </apex:tab>
+  <apex:tab label="contacts" name="tblContacts">
+  <apex:relatedList list="contacts" pageSize="5"/>
+  </apex:tab>
+  </apex:tabPanel>
+</apex:page>

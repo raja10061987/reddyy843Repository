@@ -1,0 +1,8 @@
+<aura:component implements="force:appHostable,flexiPage:availableForRecordHome,force:hasRecordId">
+<h1>Lightning Data Sevice Example</h1>
+<aura:attribute name="recordId" type="string"></aura:attribute>
+<aura:attribute name="record" type="Account"></aura:attribute>
+<lightning:recordForm recordId="{!v.recordId}" objectApiName="Account" layoutType="Full"  columns="2" mode="view">
+
+</lightning:recordForm>
+</aura:component>

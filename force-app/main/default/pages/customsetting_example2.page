@@ -1,0 +1,8 @@
+<apex:page >
+  user FirstName:{!$User.FirstName}<br/>
+  user LastName: {!$User.LastName}<br/>
+  Organization Name: {!$Organization.Name}<br/>
+  Organization Id: {!$Organization.Id}<br/>
+  Profile Name: {!$Profile.Name}<br/>
+  Profile Id: {!$Profile.Id}
+</apex:page>

@@ -1,0 +1,24 @@
+<apex:page controller="searchLeadRecordsController" setup="false" sidebar="false" showHeader="true" tabStyle="lead">
+    <apex:sectionHeader title="get leads" subtitle="get lead records By Name"/>
+    <apex:form >
+    <apex:actionFunction name="searchLeads"  action="{!searchLeadRecordsByLastName}" reRender="pageBlock" />
+        <apex:pageBlock title="search lead records">
+        <apex:pageBlockSection title="searchleadRecords" collapsible="false" columns="2">
+        <apex:inputText label="Enter Lead Name" html-placeholder="lead name" value="{!searchText}" onkeydown="if(event.keycode==13){searchLeadRecordsByLastName;}" />
+        <apex:commandButton value="search leads" onclick="searchLeads();return false"/>
+        </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock title="display lead records: size: {!leadList.size}" id="pageBlock">
+            <span style="color:red">{!noText}</span>
+        <apex:pageBlockTable value="{!leadList}" var="lead">
+            
+            <apex:column value="{!lead.name}" headerValue="lead Name"/>
+            <apex:column value="{!lead.firstName}" headerValue="lead firstName"/>
+            <apex:column value="{!lead.lastName}" headerValue="lead last Name"/>
+            <apex:column value="{!lead.email}" headerValue="lead email"/>
+            <apex:column value="{!lead.phone}" headerValue="lead phone"/>
+            <apex:column value="{!lead.fax}" headerValue="lead fax"/>
+        </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

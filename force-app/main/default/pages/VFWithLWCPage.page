@@ -1,0 +1,11 @@
+<apex:page applyBodyTag="false" showHeader="false">
+    <apex:includeLightning ></apex:includeLightning>
+    <div id="container"></div>
+    <script>
+        $Lightning.use('c:AppForVFPage', function () {
+            $Lightning.createComponent('c:Aura_publisher', {}, 'container', function (comp) {
+                // do stuff
+            });
+        });
+    </script>
+</apex:page>

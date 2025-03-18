@@ -1,0 +1,38 @@
+<apex:page standardController="account" extensions="extensioncontroller" setup="false" sidebar="false" showHeader="true" tabStyle="Bill__c" readOnly="true">
+   <h1>this is my thrid visualforce page</h1>
+   <apex:sectionHeader title="this main title" subtitle="this is sub titile"/>
+   <apex:form id="form">
+    <apex:pageBlock title="Account Details">
+    <apex:pageBlockButtons location="both" >
+    <apex:commandButton value="save"/>
+    <apex:commandButton value="save & New"/>
+    <apex:commandButton value="cancel"/>
+    <apex:commandButton value="search"/> &nbsp;&nbsp;
+    <b>
+    <apex:commandLink value="First"/> &nbsp;&nbsp;
+    <apex:commandLink value="Last"/> &nbsp;&nbsp;
+    <apex:commandLink value="Previous"/> &nbsp;&nbsp;
+    <apex:commandLink value="Next"/>
+    <apex:commandLink />
+    </b>
+    </apex:pageBlockButtons>
+    <apex:pageBlockSection title="Account information" columns="2" collapsible="true">
+    <apex:inputField value="{!account.name}"/>
+    <apex:inputField value="{!account.rating}"/>
+    <apex:inputField value="{!account.phone}"/>
+    <apex:inputField value="{!account.AccountSource}"/>
+    </apex:pageBlockSection>
+    <apex:pageBlockSection title="Address information" columns="2" collapsible="true">
+    </apex:pageBlockSection>
+    <apex:pageBlockSection title="Additional information" columns="3">
+    </apex:pageBlockSection>
+    <apex:pageblockSection title="Description information" columns="1">
+    </apex:pageblockSection>
+    </apex:pageBlock>
+    <apex:pageBlock title="contacts">
+    </apex:pageBlock>
+    <apex:pageBlock title="opportunites">
+    </apex:pageBlock>
+    <apex:pageBlock title="cases"></apex:pageBlock>
+   </apex:form>
+</apex:page>

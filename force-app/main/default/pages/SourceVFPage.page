@@ -1,0 +1,8 @@
+<apex:page controller="SourceController" setup="false" sidebar="false" tabStyle="Case" >
+<apex:sectionHeader title="Page Redirection" subtitle="Source Page" />
+<apex:form >
+<apex:pageBlock >
+<apex:commandButton value="Redirect Target Page" action="{!goToTargetPage}"/>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

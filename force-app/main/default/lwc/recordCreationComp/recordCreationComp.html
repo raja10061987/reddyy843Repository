@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title={title}>
+    <lightning-record-form
+                   fields={fieldsList} 
+                   object-api-name={objectApiName} 
+                   columns="1"
+                   onsubmit={handleSubmit} 
+                   onsuccess={handleSuccess}
+                   onerror={handleError}
+                   >
+    </lightning-record-form>
+    </lightning-card>
+</template>

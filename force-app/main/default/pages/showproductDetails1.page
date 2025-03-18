@@ -1,0 +1,7 @@
+<apex:page setup="false" sidebar="false" controller="showProductDetails1Controller">
+  <p>productName: {!productName}</p>
+  <p>productCode: {!productCode}</p>
+  <p>quantity: {!quantity}</p>
+  <p>expiryDate: {!expiryDate}</p>
+  <p>isInStock: {!isInStock}</p>
+</apex:page>

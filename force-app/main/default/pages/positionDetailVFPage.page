@@ -1,0 +1,10 @@
+<apex:page sidebar="false" tabStyle="Position__c">
+  <apex:tabPanel switchType="ajax">
+  <apex:tab label="Position Details">
+  <apex:detail relatedList="false" inlineEdit="true" />
+  </apex:tab>
+  <apex:tab label="candidates">
+  <apex:relatedList list="Candidates" pageSize="5"/>
+  </apex:tab>
+  </apex:tabPanel>
+</apex:page>

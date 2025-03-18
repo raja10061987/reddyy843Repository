@@ -1,0 +1,20 @@
+<template>
+    <lightning-card>
+        <h3 slot="title">
+          <lightning-icon icon-name="standard:account" size="small"></lightning-icon>
+          Account Creation with apex controller
+        </h3>
+        <div slot="footer">
+        <lightning-button label="Create Recotd" variant="brand" onclick={handleInsertRecord}></lightning-button>
+        <lightning-badge label={accountId1}></lightning-badge>
+        <lightning-badge label={error}></lightning-badge>
+        <span>{accountRecord.Name} - {accountRecord.Phone} - {accountRecord.Rating}</span><br/>
+        <span>{title}</span>
+        </div>
+        <p class="slds-p-horizontal_small">
+            <lightning-input name="name" label="name" type="text" value={accountRecord.Name} onchange={handleNameChange}></lightning-input>
+            <lightning-input name="phone" label="phone" type="number" value={accountRecord.Phone} onchange={handlePhoneChange}></lightning-input>
+            <lightning-input name="rating" label="rating" value={accountRecord.Rating} onchange={handleRatingChange}></lightning-input>
+        </p>
+    </lightning-card>
+</template>

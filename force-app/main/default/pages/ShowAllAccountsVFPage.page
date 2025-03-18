@@ -1,0 +1,21 @@
+<apex:page controller="ShowAllAccountsController" sidebar="false" setup="false" showHeader="true" tabStyle="Loan__c">
+ <apex:sectionHeader title="All Accounts" subtitle="account List" />
+ <apex:form >
+  <apex:pageBlock title="actList size: ({!actList.size})" >
+  <apex:pageBlockButtons location="both">
+  <apex:commandButton value="Retrive Account Records" action="{!getAllAccounts}" />
+  </apex:pageBlockButtons>
+  <apex:pageBlockTable value="{!actList}" var="account">
+  <apex:column value="{!account.Name}" />
+  <apex:column value="{!account.Type}"/>
+  <apex:column value="{!account.BillingStreet}"/>
+  <apex:column value="{!account.BillingCountry}"/>
+  <apex:column value="{!account.Phone}"/>
+  <apex:column value="{!account.Website}"/>
+  <apex:column value="{!account.Industry}"/>
+  <apex:column value="{!account.AnnualRevenue}"/>
+  <apex:column value="{!account.Rating}"/>
+  </apex:pageBlockTable>
+  </apex:pageBlock>
+ </apex:form>
+</apex:page>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Rich TEXT AREA LWC</masterLabel>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="label" type="String" label="Label to display" default="Message"
+                description="the label to display" />
+            <property name="placeHolder" type="String" label="Enter the placeHolder"
+                description="Enter the placeholder to display inside richtext Area" />
+            <property name="value" type="String" label="value to show richText Area"
+                description="value to show richtext Area" />
+            <property name="required" type="Boolean" label="Required?"
+                description="indicates weather richtext area required or not?" />
+            <property name="requiredMessage" type="String"
+                default="⚠️ Value is required for this field" label="message when value missing"
+                description="The error message to be displayed when the value is missing if the field is required." />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

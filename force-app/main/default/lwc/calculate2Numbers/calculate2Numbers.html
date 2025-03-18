@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title={title}>
+     <lightning-button label="AddSum" slot="actions" onclick={sum2Numbers}></lightning-button>
+     <p class="slds-p-horizontal_small">
+       <lightning-input type="number" label="First Number" name="fNumber" value={fNumber} placeholder="please enter first Number" onchange={handleChange}></lightning-input>
+       <lightning-input type="number" label="second Number" name="sNumber" value={sNumber} placeholder="please enter second Number" onchange={handleChange}></lightning-input>
+     </p>
+     <p slot="footer"> 
+      sum Result: <b>{result}</b><br/>
+      {greeting}
+    </p>
+    </lightning-card>
+</template>

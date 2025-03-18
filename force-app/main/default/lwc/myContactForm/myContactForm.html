@@ -1,0 +1,29 @@
+<template>
+    <lightning-card>
+        <p class="slds-var-p-around_small">
+            <lightning-layout multiple-rows>
+           <lightning-layout-item padding="around-small" size="12" medium-device-size="6" large-device-size="6">
+            <lightning-input name="FirstName" label="First Name" class="validate" type="text" required></lightning-input>
+            <lightning-input name="password" label="password" class="validate" type="password" required="true"></lightning-input>
+            <lightning-input name="email" label="email" class="validate" type="email" pattern="[a-zA-Z0-9._-]+@[a-z0-9-]+\.[a-z]{2,}$" message-when-pattern-mismatch="please enter valid email" required></lightning-input>
+            <lightning-combobox name="Country" label="Country" class="validate" options={countryOptions} required></lightning-combobox>
+
+           
+           </lightning-layout-item>
+       
+            <lightning-layout-item padding="around-small" size="12" medium-device-size="6" large-device-size="6">
+                <lightning-input name="LastName" label="Last Name" class="validate" type="text" required="true"></lightning-input>
+                <lightning-input name="Company" label="Company" class="validate" type="text" required></lightning-input>
+                <lightning-input name="phone" label="Phone" class="validate" type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}$" message-when-pattern-mismatch="please eneter valid phone: format:  000-000-0000" required></lightning-input>
+                <lightning-input name="pin code" label="pinCode" class="validate" type="number" min="1000" message-when-range-underflow=" please enter minum 4 numbers" max="999999" message-when-range-overflow=" please enter maximum 6 numbers" ></lightning-input>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" class="slds-var-p-top_small">
+             <lightning-button label="Sign Up" class="slds-align_absolute-center" onclick={createContact}></lightning-button>
+            </lightning-layout-item>
+
+            </lightning-layout>
+        </p>
+    </lightning-card>
+    
+</template>

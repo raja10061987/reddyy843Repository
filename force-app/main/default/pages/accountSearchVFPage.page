@@ -1,0 +1,24 @@
+<apex:page controller="searchAccountsController" setup="false" sidebar="false" showHeader="true" tabStyle="account">
+<apex:sectionHeader title="search records" subtitle="search account Records" />
+<apex:form >
+  <apex:pageBlock title="search records">
+  <apex:pageblockSection >
+  <apex:inputText label="account Name" value="{!searchText}" html-placeholder="please enter search text"/>
+  <apex:commandButton value="search" action="{!serachAccounts}" reRender="pgBlock"/>
+  </apex:pageblockSection>
+  </apex:pageBlock>
+  <apex:pageblock title="search results: {!actList.size}" id="pgBlock">
+  <h1 style="color:red" id="h1">{!searcherror}</h1>
+  <apex:pageBlockTable value="{!actList}" var="actObj">
+  <apex:column value="{!actObj.name}"/>
+  <apex:column value="{!actObj.rating}"/>
+  <apex:column value="{!actObj.phone}"/>
+  <apex:column value="{!actObj.industry}"/>
+  <apex:column value="{!actObj.accountNumber}"/>
+  
+  </apex:pageBlockTable>
+  </apex:pageblock>
+  
+</apex:form>
+  
+</apex:page>

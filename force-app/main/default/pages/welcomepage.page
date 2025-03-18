@@ -1,0 +1,27 @@
+<apex:page controller="RetriveAccounts" extensions="saveRecord">
+    <apex:form >
+    <apex:pageBlock title="account info">
+    <apex:pageBlockSection title="account info">
+    <apex:inputField value="{!actObj.Name}"></apex:inputField>
+    <apex:inputField value="{!actObj.type}"></apex:inputField>
+    <apex:inputField value="{!actObj.rating}"></apex:inputField>
+    </apex:pageBlockSection>
+    <apex:pageBlockSection title="additional info">
+    <apex:inputField value="{!actObj.SLAExpirationDate__c}"></apex:inputField>
+    <apex:inputField value="{!actObj.SLA__c}"></apex:inputField>
+    <apex:inputField value="{!actObj.Budget__c}"></apex:inputField>
+    </apex:pageBlockSection>
+    <apex:pageBlockButtons location="top">
+        <apex:commandButton value="save" action="{!saveRecord}"></apex:commandButton>
+    </apex:pageBlockButtons>
+    </apex:pageBlock>
+    <apex:pageBlock title="list of the records">
+     <apex:pageBlockTable value="{!actList}" var="actObj">  
+     <apex:column value="{!actObj.Id}"></apex:column>
+     <apex:column value="{!actObj.Name}"></apex:column>
+     <apex:column value="{!actObj.Type}"></apex:column>
+     <apex:column value="{!actObj.Budget__c}"></apex:column>
+     </apex:pageBlockTable>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

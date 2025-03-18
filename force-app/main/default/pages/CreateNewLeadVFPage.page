@@ -1,0 +1,11 @@
+<apex:page controller="CreateNewLeadController" setup="false" sidebar="false" showHeader="true" tabStyle="Position__c" >
+<apex:sectionHeader title="lead Record creation" subtitle="lead record" />
+<apex:form >
+<apex:pageblock >
+<apex:pageBlockButtons location="both">
+<apex:commandButton value="save" action="{!CreateNewLead}"/>
+</apex:pageBlockButtons>
+leadRecordStatus: {!leadRecordStatus}
+</apex:pageblock>
+</apex:form>
+</apex:page>

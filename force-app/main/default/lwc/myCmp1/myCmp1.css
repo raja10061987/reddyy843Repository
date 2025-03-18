@@ -1,0 +1,16 @@
+/* .active
+{
+    background: red;
+    color: yellowgreen;
+} */
+/* host will apply whole component */
+:host
+{
+    background: red;
+    color: green;
+}
+/* .active1
+{
+    background:black;
+    color: white;
+} */

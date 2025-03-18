@@ -1,0 +1,22 @@
+<apex:page controller="DisplayAllAccountsController" setup="false" sidebar="false" tabStyle="Loan__c">
+ <apex:sectionHeader title="acounts" subtitle="total Accounts List" />
+ <apex:form >
+ <apex:pageBlock title="total Accounts: {!actList.size}">
+ <apex:pageblockTable value="{!actList}" var="actObj">
+ <apex:column >
+ <apex:outputLink value="/{!actObj.id}" target="_blank">{!actObj.name}</apex:outputLink>
+ </apex:column>
+ <apex:column value="{!actObj.Rating}"/>
+ <apex:column value="{!actObj.Industry}" />
+ <apex:column value="{!actObj.phone}"/>
+ <apex:column value="{!actObj.Fax}"/>
+ <apex:column value="{!actObj.accountNumber}" headerValue="myAccountNumber"/>
+ <apex:column value="{!actObj.annualRevenue}"/>
+ <apex:column value="{!actObj.numberOfEmployees}"/>
+ <apex:column value="{!actObj.Type}"/>
+ 
+ </apex:pageblockTable>
+ 
+ </apex:pageBlock>
+ </apex:form>
+</apex:page>

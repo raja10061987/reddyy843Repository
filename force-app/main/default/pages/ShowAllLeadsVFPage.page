@@ -1,0 +1,19 @@
+<apex:page controller="ShowAllLeadsController" action="{!getLeadRecords}" setup="false" showHeader="true" sidebar="false" tabStyle="account">
+  <apex:sectionHeader title="show lead records" subtitle="lead records"/>
+  <apex:form >
+  <apex:actionPoller action="{!getLeadRecords}" interval="5"  reRender="pgBlock" />
+  <apex:pageBlock title="list of the lead records: {!leadRecords.size} {!count}" id="pgBlock">
+  <apex:pageBlockTable value="{!leadRecords}" var="leadRecord">
+  <apex:column headerValue="Lead Name">
+  <apex:outputLink value="/{!leadRecord.id}" target="_blank">{!leadRecord.FirstName} {!leadRecord.LastName}</apex:outputLink>
+  </apex:column>
+  <apex:column value="{!leadRecord.firstName}" />
+  <apex:column value="{!leadRecord.LastName}"/>
+  <apex:column value="{!leadRecord.email}"/>
+  <apex:column value="{!leadRecord.phone}"/>
+  <apex:column value="{!leadRecord.fax}"/>
+  <apex:column value="{!leadRecord.Rating}"/>
+  </apex:pageBlockTable>
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

@@ -1,0 +1,20 @@
+<template>
+    <!-- chevrondown -- down    chevronright - right-->
+    <div class={summaryClass}>
+        <!-- icon -->
+        <lightning-button-icon icon-name={summaryIcon} variant="bare" alternative-text="Toggle details for Summary Title" title="Toggle details for Summary Title" onclick={toggleState}></lightning-button-icon>
+         <!-- title -->
+        <div>
+        <div class="slds-summary-detail__title">
+        <h3 class="slds-text-heading_small slds-truncate" title={title}>{title}</h3>
+        </div>
+        
+         <!-- body -->
+        <div aria-hidden="false" class="slds-summary-detail__content" id="expando-unique-id" >
+        <p>{description}</p>
+        </div>
+
+        </div>
+
+    </div>
+</template>

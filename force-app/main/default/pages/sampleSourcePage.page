@@ -1,0 +1,15 @@
+<apex:page controller="sampleSourceController" setup="false" sidebar="false" tabStyle="Flight__c">
+<apex:sectionHeader title="Page Redirection" subtitle="Redirect to Target Page"/>
+<apex:form >
+<apex:pageBlock title="SourceBlock">
+<apex:pageBlockButtons >
+<apex:commandButton value="Redirect to Target Page" action="{!goToTargetPage}"/>
+</apex:pageBlockButtons>
+<apex:pageBlockSection >
+<apex:inputText label="Enter Account Name" value="{!actName}" html-placeHolder="Please enter Account Name" />
+<apex:inputText label="Enter Location name" value="{!Location}" html-placeHolder="Please enter Location Name"/>
+<apex:inputText label="Enter Rating" value="{!Rating}" html-placeHolder="Please Enter Rating"/>
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

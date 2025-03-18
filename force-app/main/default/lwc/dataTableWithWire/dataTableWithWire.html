@@ -1,0 +1,21 @@
+<!-- <template>
+    <lightning-card title="dislay data using dataWire in data Table">
+       <div>
+        <lightning-datatable key-field="Id" data={actRecords.data} columns={columns} ></lightning-datatable>
+       </div>
+    </lightning-card>
+</template> -->
+
+
+<template>
+    <lightning-card title="Lightning card Editable1">
+     <div class="slds-p-horizontal_small" if:true={actRecords}>
+      <template for:each={actRecords.data} for:item="actObj">
+      <div  key={actObj.Id}>
+        <lightning-formatted-rich-text  value={actObj.RichText_Description__c}></lightning-formatted-rich-text>
+
+      </div>
+      </template>
+     </div>
+    </lightning-card>
+</template>

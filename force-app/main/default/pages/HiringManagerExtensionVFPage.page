@@ -1,0 +1,21 @@
+<apex:page standardController="Hiring_Manager__c" extensions="HiringManagerExtension" setup="false" sidebar="false" showHeader="true" tabStyle="Hiring_Manager__c">
+<apex:sectionHeader title="hiring Records" subtitle="Show Hiring Records" />
+<apex:form >
+<apex:pagemessages id="error"></apex:pagemessages>
+ <apex:pageBlock title="Hiring Manager Edit">
+ <apex:pageBlockButtons >
+ <apex:commandButton value="save reord" action="{!CheckDuplicateHRRcords}" reRender="error"/>
+ <apex:commandButton value="Cancel" action="{!cancel}"/>
+</apex:pageBlockButtons>
+ <apex:pageBlockSection title="New Hiring Manager" columns="2">
+ <apex:inputField value="{!Hiring_Manager__c.Name}" required="true"/>
+ <apex:inputField value="{!Hiring_Manager__c.Location__c}"/>
+ <apex:inputField value="{!Hiring_Manager__c.Designation__c}"/>
+ <apex:inputField value="{!Hiring_Manager__c.Contact_Number__c}"/>
+ <apex:inputField value="{!Hiring_Manager__c.Email_Id__c}"/>
+ <apex:inputField value="{!Hiring_Manager__c.Share_Record_To__c}"/>
+ </apex:pageBlockSection>
+ </apex:pageBlock>
+</apex:form>
+ 
+</apex:page>

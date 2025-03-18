@@ -1,0 +1,18 @@
+<apex:page controller="ActionpollerLeadController" action="{!getLeadRecords}" setup="false" sidebar="false" showHeader="true" tabStyle="lead">
+<apex:sectionHeader title="leads" subtitle="lead records will refresh every 10 minutes"/>
+<apex:form >
+<apex:actionPoller interval="10" action="{!getLeadRecords}" reRender="pageBlock"/>
+<apex:pageBlock title="leads size: {!leadList.size}" id="pageBlock">
+<apex:pageblockTable value="{!leadList}" var="lead">
+<apex:column headerValue="lead Name">
+<apex:outputLink value="/{!lead.id}" target="_blank">{!lead.Name}</apex:outputLink>
+</apex:column>
+<apex:column value="{!lead.name}" headerValue="lead Name"/>
+<apex:column value="{!lead.firstName}" headerValue="lead first name"/>
+<apex:column value="{!lead.LastName}" headerValue="lead Last Name"/>
+<apex:column value="{!lead.email}" headerValue="lead email"/>
+<apex:column value="{!lead.phone}" headerValue="lead phone"/>
+</apex:pageblockTable>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

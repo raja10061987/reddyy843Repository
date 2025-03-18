@@ -1,0 +1,14 @@
+<template>
+    <!-- <lightning-card title="Display records imperatively">
+      <div>
+        <template for:each={actData} for:item="eachAccount">
+           <span key={eachAccount.Id}>{eachAccount.Name}<br/></span>
+        </template>
+      </div>
+    </lightning-card> -->
+    <lightning-card title="display records using dataTable">
+       <div style="width: 800px;">
+       <lightning-datatable data={actData} columns={columns} key-field="Id"></lightning-datatable>
+       </div>
+    </lightning-card>
+</template>

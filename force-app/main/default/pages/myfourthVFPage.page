@@ -1,0 +1,67 @@
+<apex:page standardController="account" setup="false" sidebar="false" showHeader="true" tabStyle="Hiring_Manager__c">
+ <apex:sectionHeader title="Account Edit1" subtitle="New Account1"/>
+ <apex:form >
+ <apex:pageblock title="new Account">
+ <apex:pageBlockButtons location="both">
+ <apex:commandButton value="Save" action="{!save}"/>
+ <apex:commandButton value="Save & New" action="{!save}"/>
+ <apex:commandButton value="Cancel" action="{!cancel}"/>
+ </apex:pageBlockButtons>
+ <apex:pageBlockSection title="Account Information">
+ <apex:inputField value="{!account.Name}"/>
+ <apex:inputField value="{!account.Rating}"/>
+ <apex:inputField value="{!account.ParentId}"/>
+ <apex:inputField value="{!account.accountNumber}"/>
+ <apex:inputField value="{!account.Fax}"/>
+ <apex:inputField value="{!account.Phone}"/>
+ <apex:inputField value="{!account.site}"/>
+ <apex:inputField value="{!account.website}"/>
+ <apex:inputField value="{!account.Type}"/>
+ <apex:inputField value="{!account.Ownership}"/>
+ <apex:inputField value="{!account.industry}"/>
+ <apex:inputField value="{!account.NumberOfEmployees}"/>
+ <apex:inputField value="{!account.AnnualRevenue}"/>
+ <apex:inputField value="{!account.Budget__c}"/>
+ <apex:inputField value="{!account.SIC}"/>
+ <apex:inputField value="{!account.Latest_case_Update__c}"/>
+ </apex:pageBlockSection>
+ 
+ <apex:pageBlockSection title="Address Information">
+ <apex:inputField value="{!account.BillingStreet}"/>
+ <apex:inputField value="{!account.billingCity}"/>
+ <apex:inputField value="{!account.billingState}"/>
+ <apex:inputField value="{!account.billingPostalCode}"/>
+ <apex:inputField value="{!account.billingCountry}"/>
+ <apex:inputField value="{!account.billingLatitude}"/>
+ <apex:inputField value="{!account.billingLongitude}"/>
+ <apex:inputField value="{!account.billingGeoCodeAccuracy}"/>
+ <apex:inputField value="{!account.ShippingStreet}"/>
+ <apex:inputField value="{!account.ShippingCity}"/>
+ <apex:inputField value="{!account.ShippingState}"/>
+ <apex:inputField value="{!account.ShippingPostalCode}"/>
+ <apex:inputField value="{!account.ShippingCountry}"/>
+ <apex:inputField value="{!account.ShippingLatitude}"/>
+ <apex:inputField value="{!account.ShippingLongitude}"/>
+ <apex:inputField value="{!account.ShippingGeoCodeAccuracy}"/>
+ <apex:inputField value="{!account.Both_addresses_are_same__c}"/>
+ 
+ </apex:pageBlockSection>
+ 
+ <apex:pageBlockSection title="Additional Information">
+ <apex:inputField value="{!account.CustomerPriority__c}"/>
+ <apex:inputField value="{!account.SLA__c}"/>
+ <apex:inputField value="{!account.SLAExpirationDate__c}"/>
+ <apex:inputField value="{!Account.SLASerialNumber__c}"/>
+ <apex:inputField value="{!Account.No_Of_Contacts__c}"/>
+ <apex:inputField value="{!Account.UpsellOpportunity__c}"/>
+ <apex:inputField value="{!Account.Active__c}"/>
+ </apex:pageBlockSection>
+ <apex:pageBlockSection title="Description Information">
+ <apex:inputField value="{!Account.description}"/>
+ </apex:pageBlockSection>
+ 
+ </apex:pageblock>
+ 
+ 
+ </apex:form>
+</apex:page>

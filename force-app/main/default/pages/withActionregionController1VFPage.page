@@ -1,0 +1,25 @@
+<apex:page controller="withActionregionController1"  setup="false" sidebar="false" showHeader="true" tabStyle="account">
+    <apex:sectionHeader title="action region" subtitle="action region example"/>
+    <apex:form id="form1">
+    <apex:pageBlock id="pageBlock">
+        <apex:pageBlockSection title="show/hide account phone">
+        <apex:pageBlockSectionItem >
+        <apex:outputLabel value="{!$ObjectType.account.fields.CustomerPriority__c.label}" for="prio"/>
+            <apex:actionRegion >
+            <apex:inputField value="{!act.CustomerPriority__c}" id="prio" >
+           <apex:actionSupport action="{!prioritychanged}" event="onchange" reRender="pageBlock" />
+          </apex:inputField>
+                </apex:actionRegion>
+           
+        </apex:pageBlockSectionItem>
+            <apex:inputField value="{!act.phone}" rendered="{!showPhone}" />
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="show account info" columns="2">
+        <apex:inputField value="{!act.phone}"/>
+        <apex:inputField value="{!act.rating}"/>
+            <apex:inputText value="{!act.Budget__c}" rendered="{!showPhone}"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+        
+    </apex:form>
+</apex:page>

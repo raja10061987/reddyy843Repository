@@ -1,0 +1,27 @@
+<apex:page controller="ShowAccounts">
+    <h1>show Account records</h1>
+    <apex:form >
+        <apex:pageBlock title="accountList({!accountList.size})">
+            <apex:pageBlockTable value="{!accountList}" var="actObj">
+                <apex:column headerValue="Account Name">
+                    <a href="#" onclick="handleClick('{!actObj.Id}')">{!actObj.Name}</a>
+                </apex:column>
+
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+
+    </apex:form>
+    <script>
+        var SAMPLEMC = "{!$MessageChannel.SampleMessageChannel__c}";
+
+        function handleClick(accountId) {
+            console.log('accountId: ' + accountId);
+            const message = {
+                recordId: accountId,
+                recordData: { value: 'message from VF page' },
+                messageType: 'Account'
+            }
+            sforce.one.publish(SAMPLEMC, message);
+        }
+    </script>
+</apex:page>

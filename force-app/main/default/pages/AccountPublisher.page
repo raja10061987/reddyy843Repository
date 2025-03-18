@@ -1,0 +1,24 @@
+<apex:page controller="ShowAccounts">
+    <span>show Account records</span>
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!actList}" var="actObj">
+                {!actObj.Rating}
+            </apex:pageBlockTable>
+
+        </apex:pageBlock>
+
+    </apex:form>
+    <!-- <script>
+        var messageToken = "{!$MessageChannel.SampleMessageChannel__c}";
+        function handleClick(accountId) {
+            console.log('accountId: ' + accountId);
+            const message = {
+                recordId: accountId,
+                recordData: { value: 'Message from VF page' },
+                messageType: 'Account'
+            }
+            sforce.one.publish(messageToken, message);
+        }
+    </script> -->
+</apex:page>

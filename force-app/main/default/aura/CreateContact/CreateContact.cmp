@@ -1,0 +1,56 @@
+<aura:component controller="ContactController">
+ <!-- <aura:attribute name="contObj" type="Contact" default="{'sObjectType':'Contact', 'FirstName':'','LastName':'','Phone':''}"></aura:attribute> -->
+ <aura:attribute name="contact" type="Contact" default="{'sObjectType': 'Contact','FirstName': 'suman','LastName': '','Email': 'aa@gmail.com','Phone': ''}"></aura:attribute>
+ <aura:attribute name="contactId" type="string"></aura:attribute>
+ <aura:attribute name="contactList" type="Contact[]"></aura:attribute>
+ <aura:handler name="init" value="{!this}" action="{!c.fetchContacts}"></aura:handler>
+ <lightning:input value="{!v.contact.FirstName}" label="First Name" placeholder="please enter First Name..."></lightning:input>
+ <lightning:input value="{!v.contact.LastName}" label="Last Name" placeholder="please enter Last Name...."></lightning:input>
+ <lightning:input value="{!v.contact.Phone}" label="Phone" placeholder="please enter Phone"></lightning:input>
+ <lightning:button label="create Contact" onclick="{!c.saveContact}"></lightning:button>
+<br/>
+ <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+    <thead>
+        <tr>
+            <th class="slds-text-title_caps" scope="col">
+            <div class="slds-truncate" title="index">Index</div>
+        </th>
+        </tr>
+        <tr>
+            <th class="slds-text-title_caps" scope="col">
+                <div class="slds-truncate" title="index">First Name</div>
+            </th>
+        </tr>
+        <tr>
+            <th class="slds-text-title_caps" scope="col">
+                <div class="slds-truncate" title="index">Last Name</div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <aura:iteration items="{!v.contactList}" var="contObj" indexVar="indexPosition">
+            <tr>
+                <td data-label="Index" scope="row">
+                    <div class="slds-truncate" title="index">
+                        {!indexPosition}
+                    </div>
+                </td>
+            </tr>
+           <tr>
+            <td data-label="Index" scope="row">
+                <div class="slds-truncate" title="index">
+                    {!contObj.FirstName}
+                </div>
+            </td>
+           </tr>
+           <tr>
+            <td data-label="Index" scope="row">
+                <div class="slds-truncate" title="index">
+                    {!contObj.LastName}
+                </div>
+            </td>
+           </tr>
+        </aura:iteration>
+    </tbody>
+ </table>
+</aura:component>

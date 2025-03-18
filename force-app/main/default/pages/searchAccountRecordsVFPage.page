@@ -1,0 +1,25 @@
+<apex:page controller="SearchAccountRecordsController" setup="false" sidebar="false" tabStyle="Loan__c">
+<apex:sectionHeader title="Get Account Details" subtitle="Search Accounts" />
+<apex:form >
+    <apex:pageMessages id="errors"></apex:pageMessages>
+<apex:pageBlock title="Accounts">
+<apex:pageBlockSection title="Get Account Records:{!actList.size}" collapsible="true" columns="2">
+<apex:inputText Label="Search Account Name" html-PlaceHolder="Enter Account name" value="{!searchstring}" />
+    <apex:commandButton value="Search Records" action="{!searchRecords}" reRender="pageBlock,errors"/>
+</apex:pageBlockSection>
+</apex:pageBlock>
+<apex:pageBlock title="accountResults:{!actList.size} " id="pageBlock">
+<apex:pageBlockTable value="{!actList}" var="Act">
+<apex:column headerValue="Account Name">
+ <apex:outputLink value="/{!Act.id}" target="_blank"> {!Act.Name} </apex:outputLink>
+  </apex:column>
+<apex:column value="{!Act.rating}"/>
+<apex:column value="{!Act.Type}"/>
+<apex:column value="{!Act.Phone}"/>
+<apex:column value="{!Act.Fax}"/>
+<apex:column value="{!Act.AnnualRevenue}"/>
+<apex:column value="{!Act.Industry}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

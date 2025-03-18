@@ -1,0 +1,18 @@
+<template>
+    hello
+    <!-- <div>
+        <lightning-datatable key-field="Id" columns={columns} data={myData}>
+        </lightning-datatable>
+    </div> -->
+    <div>
+        <lightning-card title="account records">
+        <template for:each={myData} for:item="account" for:index="index">
+             <div key={account.Id}>{account.Name} - {account.Phone} - {account.Industry} - {account.Type}
+                <br/><br/>
+             </div>
+            
+             
+        </template>
+    </lightning-card>
+    </div>
+</template>

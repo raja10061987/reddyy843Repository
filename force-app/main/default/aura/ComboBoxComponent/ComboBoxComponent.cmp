@@ -1,0 +1,8 @@
+<aura:component>
+<!-- register component event -->
+<aura:registerEvent name="cmpEvent" type="c:selectedValComponentEvent"></aura:registerEvent>
+<aura:attribute name="selectedOption" type="string"></aura:attribute>
+<aura:attribute name="options" type="List" default="[{label:'India',value:'India1'},{label:'USA',value:'USA1'},{label:'Canda',value:'Canda1'}]"></aura:attribute>
+<lightning:combobox label="countries" value="{!v.selectedOption}" options="{!v.options}" placeholder="please select country" onchange="{!c.handleChange}"></lightning:combobox>
+<!-- <span>{!v.selectedOption}</span> -->
+</aura:component>

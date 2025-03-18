@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="New Contact">
+        <p class="slds-var-p-around_small">
+        <lightning-layout multiple-rows>
+        <lightning-layout-item padding="around-small" size="12" medium-device-size="6" large-device-size="6">
+        <lightning-input name="FirstName" class="validate" type="text" label="First Name" required></lightning-input>
+        <lightning-input name="password" class="validate" type="text" label="password" required></lightning-input>
+        <lightning-input name="email" class="validate" type="email" label="email" pattern="[a-zA-Z0-9._-]+@[a-z0-9-]+\.[a-z]{2,}$" message-when-pattern-mismatch="please enter valid email" required></lightning-input>
+        <lightning-combobox name="country" class="validate" label="Country" options={countryOptions} required></lightning-combobox>
+    </lightning-layout-item>
+    <lightning-layout-item padding="around-small" size="12" medium-device-size="6" large-device-size="6">
+        <lightning-input name="LastName" class="validate" type="text" label="Last Name" required></lightning-input>
+        <lightning-input name="company" class="validate" type="text" label="Company" required=""></lightning-input>
+        <lightning-input name="phone" class="validate" type="text" label="Phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}$" message-when-pattern-mismatch="please enter valide phone number -format: 000-000-0000" required></lightning-input>
+        <lightning-input name="pinCode" class="validate" type="number" label="pin Code" min="1000" message-when-range-underflow="please enter minumum 4 characters" max="999999" message-when-range-overflow="please enter maximum 6 characters"></lightning-input>
+    </lightning-layout-item>
+    
+    <lightning-layout-item size="12" class="slds-var-p-top_small">
+        <lightning-button class="slds-align_absolute-center" label="Sign Up" onclick={createContact}></lightning-button>    
+    </lightning-layout-item>
+
+    </lightning-layout>
+    </p>
+    </lightning-card>
+
+</template>

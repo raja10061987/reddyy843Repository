@@ -1,0 +1,10 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	<lightning:card aura:id="mycard" title="first component" iconName="custom:custom6">
+        
+     Hello world! this is first component
+        <lightning:button variant="brand" label="click me" onclick="{!c.handleClick}"></lightning:button>
+    </lightning:card> 
+    
+
+   
+</aura:component>

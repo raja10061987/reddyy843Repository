@@ -1,0 +1,48 @@
+<aura:component controller="addDelController" implements="flexipage:availableForAllPageTypes">
+  this is parent component
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}"></aura:handler>
+  <!-- handle events -->
+  <aura:handler name="deleteRowEvent" event="c:deleteRowEvent" action="{!c.removeDeletedRow}"></aura:handler>
+  <aura:handler name="addRowEvent" event="c:AddNewRowEvent" action="{!c.addNewRow}"></aura:handler>
+
+   <!-- Aura attribute for store contact Object as array -->
+   <aura:attribute name="contactList" type="Contact[]"></aura:attribute>
+  <!-- Header Part -->
+   <div class="slds-page-header">
+   <h1 class="slds-page-header_title">create multiple contacts</h1>
+   <p class="slds-text-body_small slds-line-height_rest">infosys.com</p>
+   </div>
+
+      <!-- table part -->
+     <table class="slds-table slds-table_borded slds-table_cell-buffer">
+     <thead>
+        <tr class="slds-text-title_caps">
+         <th scope="col">
+          <div class="slds-truncate">S.no</div>
+         </th>
+         <th scope="col">
+            <div class="slds-truncate" title="First Name">First Name</div>
+           </th>
+           <th scope="col">
+            <div class="slds-truncate" title="Last Name">Last Name</div>
+           </th>
+           <th scope="col">
+            <div class="slds-truncate" title="Phone">Phone</div>
+           </th>
+           <th scope="col">
+            <div class="slds-truncate">Add/remove</div>
+           </th>
+        </tr>
+     </thead>
+     <tbody>
+         <!-- iterate the child component for display table rows with pass list item index for track the every child component
+         and pass the list contact instance -->
+         <aura:iteration items="{!v.contactList}" var="contactObject" indexVar="index">
+           <c:dynamicRowItem contactInstance="{!contactObject}" rowIndex="{!index}"></c:dynamicRowItem>
+         </aura:iteration>
+     </tbody>
+
+     </table>
+     <br/>
+     <button class="slds-button slds-button_brand" onclick="{!c.save}">Save</button>
+</aura:component>

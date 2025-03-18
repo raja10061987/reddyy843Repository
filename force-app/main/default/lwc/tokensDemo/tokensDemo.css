@@ -1,0 +1,15 @@
+/* default lwc desizne token */
+.main2
+{
+    background: var(--lwc-colorBackgroundInverse);
+    color: var(--lwc-colorTextInverse);
+
+}
+
+/* custom desizne token */
+
+.main1
+{
+    background: var(--c-myBackGroundColor);
+    color: var(--c-myTextColor);
+}

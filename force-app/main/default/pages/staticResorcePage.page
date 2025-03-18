@@ -1,0 +1,6 @@
+<apex:page setup="false" sidebar="false" showHeader="true" >
+    <apex:sectionHeader title="show PDF" subtitle="shoe PDF File"/>
+    <apex:form >
+     <object data="{!$Resource.image}"> </object>
+   </apex:form>
+</apex:page>

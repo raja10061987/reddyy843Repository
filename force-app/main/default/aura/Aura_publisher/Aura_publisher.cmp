@@ -1,0 +1,15 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" controller="AccountController">
+<aura:attribute name="actList" type="Account[]"></aura:attribute>
+<lightning:messageChannel type="SampleMessageChannel__c" aura:id="LMSID"></lightning:messageChannel>
+<aura:handler name="init" value="{!this}" action="{!c.geTrecords}"></aura:handler>
+
+<lightning:card title="Aura_publisher">
+<p class="slds-p-horizontal_small">
+<aura:iteration items="{!v.actList}" var="item">
+    <lightning:tile>
+        <a class="slds-truncate" title="7 members" data-value="{!item.Id}" onclick="{!c.handleClick}" href="#">{!item.Name}</a>
+    </lightning:tile>
+</aura:iteration>
+</p>
+</lightning:card>
+</aura:component>

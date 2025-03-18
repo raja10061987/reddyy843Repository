@@ -1,0 +1,10 @@
+<apex:page sidebar="false" showHeader="false">
+<apex:form >
+<h1>this is a title</h1>
+<apex:pageBlock title="company info">
+<apex:pageBlockSection >
+<p>welcome to the world of the salesforce tech book block</p>
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

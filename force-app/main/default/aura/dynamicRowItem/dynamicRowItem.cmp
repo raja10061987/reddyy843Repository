@@ -1,0 +1,38 @@
+<aura:component>
+<aura:attribute name="contactInstance" type="Contact"></aura:attribute>
+<aura:attribute name="rowIndex" type="String"></aura:attribute>
+<!-- regiser 2 events for handle add/remove items -->
+<aura:registerEvent name="deleteRowEvent" type="c:deleteRowEvent"></aura:registerEvent>
+<aura:registerEvent name="addRowEvent" type="c:AddNewRowEvent"></aura:registerEvent>
+<aura:handler name="init" value="{!this}" action="{!c.onLoad}"></aura:handler>
+
+  <!-- Table Row -->
+  <tr class="slds-text-title_caps">
+   <td>
+    {!v.rowIndex + 1}
+   </td>
+   <td>
+    <ui:inputText class="slds-input" value="{!v.contactInstance.FirstName}"></ui:inputText>
+   </td>
+   <td>
+    <ui:inputText class="slds-input" value="{!v.contactInstance.LastName}"></ui:inputText>
+   </td>
+   <td>
+    <ui:inputText class="slds-input" value="{!v.contactInstance.Phone}"></ui:inputText>
+   </td>
+   <td>
+    <aura:if isTrue="{!v.rowIndex == 0}">
+             <a onclick="{!c.addNewRow}">
+                <lightning:icon iconName="utility:add" class="slds-icon slds-icon_small" size="small"></lightning:icon>
+                <span class="slds-assitive-text">Add Icon</span>
+             </a>
+    <aura:set attribute="else">
+       <a onclick="{!c.removeRow}">
+        <lightning:icon iconName="utility:delete" variant="error" class="slds-icon slds-icon_small" size="small"></lightning:icon>
+        <!-- <span class="slds-assitive-text"> delete icon</span> -->
+       </a>
+    </aura:set>
+    </aura:if>
+   </td>
+  </tr>
+</aura:component>

@@ -1,0 +1,23 @@
+<apex:page controller="SaveAccountWithProperties">
+    <apex:form >
+        <apex:pageBlock title="Account Save">
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Account Name"></apex:outputLabel>
+                    <apex:inputText value="{!actName}"></apex:inputText>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Rating"></apex:outputLabel>
+                    <apex:inputText value="{!actRating}"></apex:inputText>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Phone"></apex:outputLabel>
+                    <apex:inputText value="{!actPhone}"></apex:inputText>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Save" action="{!addAccount}"></apex:commandButton>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

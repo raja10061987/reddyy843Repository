@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Calculator Example">
+     <lightning-button label="Add 2 Numbers" slot="actions" onclick={addTwoNumbers}></lightning-button>
+     <p class="slds-p-horizontal_small">
+        <lightning-input value={firstNumber} name="firstNumber" label="please enter first Number"  onchange={handleChanges}></lightning-input>
+        <lightning-input value={secondNumber} name="secondNumber" label="please enter second Number"  onchange={handleChanges}></lightning-input>
+    </p>
+     <!-- <p slot="footer"> 
+        sum: {result}
+
+     </p> -->
+     <p slot="footer">
+        <c-result-calculator-component result-cal-sum={result}></c-result-calculator-component>
+     </p>
+    </lightning-card>
+</template>

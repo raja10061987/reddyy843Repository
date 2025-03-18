@@ -1,0 +1,55 @@
+<apex:page standardController="Account" extensions="ExtensionController1" showHeader="false" rendered="true" lightningStylesheets="true">
+  <apex:slds />
+  <apex:form >
+    <apex:pageBlock title="account edit">
+
+      <apex:pageBlockSection title="account information" columns="2">
+        <apex:inputField value="{!Account.Name}" />
+        <apex:inputField value="{!Account.Rating}" />
+        <apex:inputField value="{!Account.Phone}" />
+        <apex:inputField value="{!Account.Industry}" />
+      </apex:pageBlockSection>
+
+      <apex:pageBlockSection title="address information">
+        <h1>there is no address</h1>
+      </apex:pageBlockSection>
+
+      <apex:pageBlockSection title="additional information" collapsible="true" columns="2">
+        <apex:inputField value="{!Account.CustomerPriority__c }" />
+        <apex:inputField value="{!Account.SLA__c}" />
+        <apex:inputField value="{!Account.Active__c}" />
+        <apex:inputField value="{!Account.UpsellOpportunity__c}" />
+      </apex:pageBlockSection>
+
+      <apex:pageBlockButtons location="both">
+        <apex:commandButton value="Save" action="{!save}" />
+        <apex:commandButton value="cancel" action="{!cancel}" />
+      </apex:pageBlockButtons>
+
+    </apex:pageBlock>
+
+    <apex:pageBlock title="Account Records">
+      <apex:pageBlockTable value="{!actRecords}" var="actObj">
+        <apex:column value="{!actObj.Name}" />
+        <apex:column value="{!actObj.Phone}" />
+        <apex:column value="{!actObj.Rating}" />
+        <apex:column value="{!actObj.Budget__c}" />
+      </apex:pageBlockTable>
+    </apex:pageBlock>
+  </apex:form>
+  <div class="demo-only" style="width:30rem">
+    <article class="slds-tile">
+      <h3 class="slds-tile__title slds-truncate" title="Salesforce UX">
+        <a href="#">Salesforce UX</a>
+      </h3>
+      <div class="slds-tile__detail">
+        <dl class="slds-list_horizontal slds-wrap">
+          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">First Label:</dt>
+          <dd class="slds-item_detail slds-truncate" title="Description for first label">Description for first label</dd>
+          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Second Label:</dt>
+          <dd class="slds-item_detail slds-truncate" title="Description for second label">Description for second label</dd>
+        </dl>
+      </div>
+    </article>
+  </div>
+</apex:page>

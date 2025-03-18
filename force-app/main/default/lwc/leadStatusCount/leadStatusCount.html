@@ -1,0 +1,36 @@
+<template>
+    <lightning-card>
+        <h3 slot="title">
+          <lightning-icon icon-name="standard:lead" size="small"></lightning-icon>
+          &nbsp; Leads Count by status
+        </h3>
+        <div slot="footer">
+           total Leads Count: {totalCount}
+        </div>
+       <table class="slds-table slds-table_bordered">
+       <thead>
+        <tr class="slds-text-title_caps">
+          <th scope="col">
+           <div title="key"> Lead Status</div>
+          </th>
+          <th scope="col">
+            <div title="count">Lead Count</div>
+          </th>
+        </tr>
+       </thead>
+       <tbody>
+        <template for:each={leadsList} for:item="lead" for:index="index">
+           <tr key={lead.key}>
+             <th scope="col">
+                <div title={lead.key}>{lead.key}</div>
+             </th>
+             <th scope="col">
+              <div title={lead.value}>{lead.value}</div>
+             </th>
+           </tr>
+        </template>
+       </tbody>
+       </table>
+
+    </lightning-card>
+</template>
